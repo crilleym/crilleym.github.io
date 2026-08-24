@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mio Crilley — Mechanical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F6F3;
+    --ink: #1E2124;
+    --ink-soft: #55595E;
+    --line: #DBDBD5;
+    --accent: #3F5F73;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--accent);}
+
+  ::selection{background:var(--accent); color:#fff;}
+
+  .wrap{
+    max-width:680px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky;
+    top:0;
+    background:rgba(246,246,243,0.92);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    z-index:10;
+  }
+  .nav-inner{
+    max-width:680px;
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .nav-name{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:16px;
+  }
+  nav ul{
+    list-style:none;
+    display:flex;
+    gap:22px;
+  }
+  nav a{
+    font-size:13.5px;
+    text-decoration:none;
+    color:var(--ink-soft);
+  }
+  nav a:hover{color:var(--ink);}
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:72px 0 56px;
+  }
+  .hero p.kicker{
+    font-size:14px;
+    color:var(--accent);
+    margin-bottom:14px;
+    letter-spacing:0.02em;
+  }
+  h1{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:clamp(32px, 6vw, 44px);
+    line-height:1.15;
+    margin-bottom:18px;
+  }
+  .hero-sub{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-bottom:28px;
+  }
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .hero-meta a{color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px;}
+  .hero-meta a:hover{color:var(--accent);}
+
+  /* ============ SECTIONS ============ */
+  section{
+    padding:44px 0;
+    border-top:1px solid var(--line);
+  }
+  h2{
+    font-family:'Source Serif 4', serif;
+    font-weight:600;
+    font-size:22px;
+    margin-bottom:26px;
+  }
+
+  /* ============ ABOUT ============ */
+  .about p{
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    max-width:62ch;
+  }
+  .about p:last-child{margin-bottom:0;}
+
+  /* ============ EXPERIENCE ============ */
+  .entry{
+    margin-bottom:34px;
+  }
+  .entry:last-child{margin-bottom:0;}
+  .entry-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:4px 16px;
+    margin-bottom:2px;
+  }
+  .entry-role{
+    font-weight:600;
+    font-size:16.5px;
+  }
+  .entry-date{
+    font-size:13px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .entry-org{
+    font-size:14px;
+    color:var(--accent);
+    margin-bottom:10px;
+  }
+  .entry ul{
+    padding-left:18px;
+    color:var(--ink-soft);
+  }
+  .entry li{
+    margin-bottom:6px;
+    font-size:15px;
+  }
+  .entry li:last-child{margin-bottom:0;}
+
+  /* ============ PROJECTS ============ */
+  .proj{
+    margin-bottom:28px;
+  }
+  .proj:last-child{margin-bottom:0;}
+  .proj-title{
+    font-weight:600;
+    font-size:16.5px;
+    margin-bottom:2px;
+  }
+  .proj-org{
+    font-size:13.5px;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  .proj-desc{
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ SKILLS ============ */
+  .skills-list{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    row-gap:12px;
+    column-gap:16px;
+  }
+  .skills-list dt{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .skills-list dd{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ EDUCATION ============ */
+  .edu-school{
+    font-weight:600;
+    font-size:16.5px;
+    margin-bottom:2px;
+  }
+  .edu-degree{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .edu-awards{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ CONTACT ============ */
+  .contact p{
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-bottom:24px;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .contact-links a{
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    display:flex;
+    justify-content:space-between;
+    color:var(--ink);
+  }
+  .contact-links a span{color:var(--ink-soft); font-size:13.5px;}
+  .contact-links a:hover{color:var(--accent);}
+
+  footer{
+    padding:32px 0 56px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  @media (max-width:560px){
+    nav ul{gap:14px;}
+    .skills-list{grid-template-columns:1fr;}
+    .skills-list dt{margin-top:4px;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-name">Mio Crilley</div>
+    <nav>
+      <ul>
+        <li><a href="#about">About</a></li>
+        <li><a href="#experience">Work</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="kicker">Mechanical Engineering — Energy Concentration</p>
+    <h1>Building and testing hardware, from gas infrastructure to race cars.</h1>
+    <p class="hero-sub">I'm a mechanical engineering student at the University of Michigan. My work moves between energy systems and product engineering — writing standards, machining parts, and running tests to get designs right.</p>
+    <div class="hero-meta">
+      <span>Ann Arbor, MI</span>
+      <a href="mailto:crilleym@umich.edu">crilleym@umich.edu</a>
+      <a href="https://www.linkedin.com/in/miocrilley" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section class="about" id="about">
+    <h2>About</h2>
+    <p>I like work that starts on a drawing and ends on a bench — machining parts, running airflow tests, or walking a pipeline excavation to check corrosion data against the print.</p>
+    <p>My internships have moved between energy infrastructure and automotive product engineering: revising gas engineering standards and methane emissions reporting at Consumers Energy, and redesigning a production seat ventilation system at Adient that's projected to save $358K a year. Outside of internships, I lead fabrication on a university aerospace research project and design components for MRacing's Formula SAE chassis team.</p>
+    <p>I'm comfortable across the full loop: CAD and GD&T in Siemens NX and SolidWorks, machining on a manual mill and lathe, and analysis in MATLAB — plus teaching, as a peer facilitator for 35 students in UROP.</p>
+  </section>
+
+  <section id="experience">
+    <h2>Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Co-op, Gas Engineering Standards Services</span>
+        <span class="entry-date">Aug 2026 — May 2027</span>
+      </div>
+      <div class="entry-org">Consumers Energy · Livonia, MI</div>
+      <ul>
+        <li>Develop and revise enterprise engineering standards governing methane emissions measurement, collection, and net-zero reporting across gas operations.</li>
+        <li>Author and update Electrical, Instrumentation & Controls (EI&C) standards supporting design, operation, and maintenance of gas infrastructure.</li>
+        <li>Lead conversion and modernization of 20+ legacy technical documents into internal templates.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Peer Facilitator, UROP</span>
+        <span class="entry-date">Aug 2026 — May 2027</span>
+      </div>
+      <div class="entry-org">University of Michigan Undergraduate Instructor · Ann Arbor, MI</div>
+      <ul>
+        <li>Instruct a cohort of 35 peers within the Undergraduate Research Opportunities Program.</li>
+        <li>Manage 1-on-1 consultations and targeted review sessions to support academic and professional development.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Gas Engineering Intern, External Corrosion</span>
+        <span class="entry-date">May 2026 — Aug 2026</span>
+      </div>
+      <div class="entry-org">Consumers Energy · Livonia, MI</div>
+      <ul>
+        <li>Analyzed external corrosion on gas distribution and transmission pipelines using the Direct Assessment process across 15+ excavations.</li>
+        <li>Managed facilities attribute data and historical information for 3 citygates and 2 valve sites.</li>
+        <li>Organized and renamed 800+ Owl test stations to improve BSI database accuracy.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Complete Seat Engineering Intern</span>
+        <span class="entry-date">May 2025 — Aug 2025</span>
+      </div>
+      <div class="entry-org">Adient — General Motors Business Unit · Plymouth, MI</div>
+      <ul>
+        <li>Redesigned the ventilation system for a GM production seat, projecting $358K in annual savings and an 8-second reduction in JIT assembly takt time.</li>
+        <li>Developed and executed a tactical engineering plan, managing a global team of product engineers.</li>
+        <li>Applied root cause analysis via Adient's Basic Engineering Process to resolve cushion airflow performance issues.</li>
+        <li>Ran Complete Seat Airflow and Steady State Heat Flux tests in the Thermal Comfort Lab, comparing results against FEA and visualizing test data to evaluate cooling effectiveness.</li>
+        <li>Rebuilt seats and prototyped custom foam airflow test fixtures.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+
+    <div class="proj">
+      <div class="proj-title">Kresling Tube Collapse Study</div>
+      <div class="proj-org">UM Aerospace Dept. Undergraduate Research — Fabrication & Testing Lead</div>
+      <div class="proj-desc">Co-authored an experimental-computational study on the compressive collapse behavior of 3D-printed Kresling tubes. Designed origami/kirigami tubular structures in Blender to study compression-torsion coupling for energy absorption, then analyzed deformation with Digital Image Correlation in GOM Correlate.</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">Pick-and-Place Robot</div>
+      <div class="proj-org">Manufacturing & Design I — Team Lead</div>
+      <div class="proj-desc">Designed 10+ custom CAD components for a mobile pick-and-place robot — including the gripping/forklift mechanism, structural mounts, and mechanical interfaces — in SolidWorks. Machined 15+ components on a manual mill and lathe, then iterated a 2-jaw gripper to reliably lift up to 1 lb.</div>
+    </div>
+
+    <div class="proj">
+      <div class="proj-title">Chassis Insert Test Assembly</div>
+      <div class="proj-org">MRacing Formula SAE — Suspension & Chassis Team</div>
+      <div class="proj-desc">Designed the Chassis Insert Testing Assembly and an over-wing push bar in Siemens NX, producing 20+ manufacturing drawings with GD&T and tolerancing. Machined and built hardware on a mill, lathe, and horizontal band saw, and assisted with carbon layups.</div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills-list">
+      <dt>CAD & Design</dt>
+      <dd>Siemens NX, SolidWorks, CATIA, Blender, GD&T</dd>
+      <dt>Programming</dt>
+      <dd>MATLAB, C++</dd>
+      <dt>Fabrication</dt>
+      <dd>Manual mill, lathe, horizontal band saw, carbon layup, prototyping</dd>
+      <dt>Productivity</dt>
+      <dd>Excel, PowerPoint, Word</dd>
+      <dt>Languages</dt>
+      <dd>English (native), Japanese (proficient)</dd>
+    </dl>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-school">University of Michigan, Ann Arbor</div>
+    <div class="edu-degree">B.S.E. in Mechanical Engineering, Energy Concentration — Expected May 2028 · GPA 3.32/4.0</div>
+    <div class="edu-awards">Dean's List · University Honors · William J. Branstrom Freshman Prize · Blue Ribbon, UROP Symposium</div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>Open to co-ops, internships, and full-time roles in mechanical and energy systems engineering.</p>
+    <div class="contact-links">
+      <a href="mailto:crilleym@umich.edu">Email <span>crilleym@umich.edu</span></a>
+      <a href="https://www.linkedin.com/in/miocrilley" target="_blank" rel="noopener">LinkedIn <span>/in/miocrilley</span></a>
+      <a href="tel:2487046569">Phone <span>248.704.6569</span></a>
+    </div>
+  </section>
+
+  <footer>© 2026 Mio Crilley</footer>
+
+</div>
+
+</body>
+</html>
