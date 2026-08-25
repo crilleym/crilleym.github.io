@@ -236,6 +236,24 @@
     object-fit:contain;
     padding:10px;
   }
+  .chassis-gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .chassis-gallery .g-item img{
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    padding:10px;
+  }
+  .chassis-gallery .video-item video{
+    display:block;
+    width:100%;
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    background:var(--panel);
+  }
   .g-item img{
     display:block;
     width:100%;
@@ -248,7 +266,7 @@
     line-height:1.4;
   }
   @media (max-width:560px){
-    .research-gallery, .robot-gallery{grid-template-columns:1fr;}
+    .research-gallery, .robot-gallery, .chassis-gallery{grid-template-columns:1fr;}
     .g-item.g-wide{grid-column:auto;}
   }
   .diagram-label{
@@ -546,6 +564,45 @@
       <div class="proj-desc">A mobile robot with a custom two-jaw gripper I designed and machined myself, built to pick up and move small objects reliably — tuned through a lot of trial, error, and re-machined parts.</div>
     </div>
 
+    <div class="proj">
+      <div class="chassis-gallery">
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/First Drawings of Push Bar.jpg" data-lightbox-alt="First drawings of the Formula SAE push bar" aria-label="Enlarge image">
+          <img src="project-images/First Drawings of Push Bar.jpg" alt="First drawings of the Formula SAE push bar">
+        </button>
+        <figcaption>First push-bar drawings</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
+        </button>
+        <figcaption>Manufactured chassis insert</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Manufacturing setup for the chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Manufacturing setup for the chassis insert">
+        </button>
+        <figcaption>Manufacturing process</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="CAD modeling of the chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Modeling of chassis insert.png" alt="CAD modeling of the chassis insert">
+        </button>
+        <figcaption>Chassis insert modeling</figcaption>
+        </figure>
+        <figure class="g-item video-item">
+          <video controls preload="metadata" aria-label="Push bar CAD video">
+            <source src="project-images/Push Bar CAD Video.MOV" type="video/quicktime">
+            Your browser does not support the video tag.
+          </video>
+          <figcaption>Push-bar CAD walkthrough</figcaption>
+        </figure>
+      </div>
+      <div class="proj-title">Chassis Insert Test Assembly</div>
+      <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
+      <div class="proj-desc">A test fixture and push bar I designed in Siemens NX and machined by hand, built to validate how a chassis insert holds up before it goes anywhere near the actual car.</div>
+    </div>
+
     <div class="proj proj-research">
       <div class="research-gallery">
         <figure class="g-item g-wide">
@@ -570,40 +627,6 @@
       <div class="proj-desc">An origami-inspired tube that collapses in a controlled, twisting motion under compression — designed to absorb energy the way a crumple zone does, but in a lighter, more predictable package. Presented at the UROP Symposium with Georgina Sanchez, Colin Hunter, and Royan D'Mello.</div>
       <a class="proj-link" href="kresling-poster.pdf" target="_blank" rel="noopener">View Research Poster →</a>
     </div>
-
-    <div class="proj">
-      <div class="proj-diagram">
-        <svg viewBox="0 0 640 300" xmlns="http://www.w3.org/2000/svg">
-          <!-- Chassis insert test assembly diagram -->
-          <g stroke="#26282A" stroke-width="1.4" fill="none">
-            <!-- outer frame -->
-            <rect x="120" y="60" width="400" height="180" rx="4"/>
-            <!-- diagonal push bar -->
-            <line x1="120" y1="240" x2="520" y2="60" stroke="#3F5F73" stroke-width="2"/>
-            <!-- insert block -->
-            <rect x="285" y="128" width="70" height="44" rx="2"/>
-            <!-- bolt circles -->
-            <circle cx="150" cy="90" r="5"/>
-            <circle cx="490" cy="90" r="5"/>
-            <circle cx="150" cy="210" r="5"/>
-            <circle cx="490" cy="210" r="5"/>
-          </g>
-          <!-- dimension line -->
-          <g stroke="#5C5F62" stroke-width="1">
-            <line x1="120" y1="255" x2="520" y2="255"/>
-            <line x1="120" y1="248" x2="120" y2="262"/>
-            <line x1="520" y1="248" x2="520" y2="262"/>
-          </g>
-          <text x="290" y="275" class="diagram-label" font-family="Inter">400 mm</text>
-          <text x="300" y="155" class="diagram-label" font-family="Inter" fill="#26282A">INSERT</text>
-          <text x="150" y="45" class="diagram-tag" font-family="Inter">CHASSIS INSERT TEST ASSEMBLY — GD&amp;T TOLERANCED</text>
-        </svg>
-      </div>
-      <div class="proj-title">Chassis Insert Test Assembly</div>
-      <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
-      <div class="proj-desc">A test fixture and push bar I designed in Siemens NX and machined by hand, built to validate how a chassis insert holds up before it goes anywhere near the actual car.</div>
-    </div>
-
   </section>
 
   <section id="skills">
