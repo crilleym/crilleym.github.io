@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mio Crilley — Mechanical Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #E7E7E4;
+    --panel: #F4F4F2;
+    --ink: #26282A;
+    --ink-soft: #5C5F62;
+    --line: #CFCFCB;
+    --accent: #3F5F73;
+  }
+
+  *{margin:0;padding:0;box-sizing:border-box;}
+
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter', sans-serif;
+    font-size:16.5px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--accent);}
+
+  ::selection{background:var(--accent); color:#fff;}
+
+  .wrap{
+    max-width:720px;
+    margin:0 auto;
+    padding:0 24px;
+  }
+
+  /* ============ NAV ============ */
+  header{
+    position:sticky;
+    top:0;
+    background:rgba(231,231,228,0.9);
+    backdrop-filter:blur(6px);
+    border-bottom:1px solid var(--line);
+    z-index:10;
+  }
+  .nav-inner{
+    max-width:720px;
+    margin:0 auto;
+    padding:16px 24px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+  }
+  .nav-name{
+    font-weight:600;
+    font-size:16px;
+  }
+  .nav-right{
+    list-style:none;
+    display:flex;
+    gap:22px;
+    align-items:center;
+  }
+  .nav-right li{
+    display:flex;
+  }
+  .nav-right button{
+    background:none;
+    border:none;
+    cursor:pointer;
+    font-family:inherit;
+    font-size:13px;
+    color:var(--ink-soft);
+    padding:6px 2px;
+    white-space:nowrap;
+  }
+  .nav-right button:hover{color:var(--ink);}
+  .nav-right a.resume-link{
+    font-size:13px;
+    text-decoration:none;
+    color:#fff;
+    background:var(--accent);
+    padding:7px 14px;
+    border-radius:3px;
+    transition:background 0.15s ease;
+  }
+  .nav-right a.resume-link:hover{background:#335062;}
+
+  /* ============ HERO ============ */
+  .hero{
+    padding:64px 0 48px;
+  }
+  .hero p.kicker{
+    font-size:14px;
+    color:var(--accent);
+    margin-bottom:14px;
+    letter-spacing:0.02em;
+  }
+  h1{
+    font-weight:700;
+    font-size:clamp(32px, 6vw, 44px);
+    line-height:1.2;
+    letter-spacing:-0.01em;
+    margin-bottom:14px;
+  }
+  .hero-sub{
+    font-size:17px;
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-bottom:26px;
+  }
+  .hero-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:12px;
+    align-items:center;
+    margin-bottom:26px;
+  }
+  .btn-primary{
+    display:inline-block;
+    font-size:14px;
+    text-decoration:none;
+    color:#fff;
+    background:var(--accent);
+    padding:11px 20px;
+    border-radius:3px;
+    font-weight:500;
+    transition:background 0.15s ease;
+  }
+  .btn-primary:hover{background:#335062;}
+  .btn-secondary{
+    display:inline-block;
+    font-size:14px;
+    text-decoration:none;
+    color:var(--ink);
+    border:1px solid var(--line);
+    padding:10px 19px;
+    border-radius:3px;
+    transition:border-color 0.15s ease;
+  }
+  .btn-secondary:hover{border-color:var(--accent); color:var(--accent);}
+  .hero-meta{
+    display:flex;
+    flex-wrap:wrap;
+    gap:18px;
+    font-size:13.5px;
+    color:var(--ink-soft);
+  }
+  .hero-meta a{color:var(--ink-soft); text-decoration:underline; text-underline-offset:2px;}
+  .hero-meta a:hover{color:var(--accent);}
+
+  /* ============ SECTIONS ============ */
+  section{
+    padding:44px 0;
+    border-top:1px solid var(--line);
+  }
+  h2{
+    font-weight:700;
+    font-size:21px;
+    letter-spacing:-0.005em;
+    margin-bottom:8px;
+  }
+  .section-sub{
+    font-size:14px;
+    color:var(--ink-soft);
+    margin-bottom:26px;
+  }
+
+  /* ============ PROJECTS ============ */
+  .proj{
+    margin-bottom:52px;
+  }
+  .proj:last-child{margin-bottom:0;}
+  .proj-diagram{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    padding:18px;
+    margin-bottom:16px;
+  }
+  .proj-diagram svg{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .proj-title{
+    font-weight:600;
+    font-size:17px;
+    margin-bottom:2px;
+  }
+  .proj-org{
+    font-size:13.5px;
+    color:var(--accent);
+    margin-bottom:8px;
+  }
+  .proj-desc{
+    font-size:15px;
+    color:var(--ink-soft);
+  }
+  .proj-link{
+    display:inline-block;
+    font-size:13.5px;
+    color:var(--accent);
+    text-decoration:none;
+    margin-top:10px;
+    font-weight:500;
+  }
+  .proj-link:hover{text-decoration:underline;}
+
+  /* ============ PROJECT IMAGE GALLERIES ============ */
+  .research-gallery, .robot-gallery{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .g-item{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    display:flex;
+    flex-direction:column;
+  }
+  .g-item.g-wide{
+    grid-column:1 / -1;
+  }
+  .robot-gallery{
+    grid-template-columns:repeat(3, 1fr);
+  }
+  .robot-gallery .g-item img{
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    padding:10px;
+  }
+  .chassis-gallery{
+    display:grid;
+    grid-template-columns:repeat(3, 1fr);
+    gap:10px;
+    margin-bottom:16px;
+  }
+  .chassis-gallery .g-item img{
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    padding:10px;
+  }
+  .chassis-gallery .video-item video{
+    display:block;
+    width:100%;
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    background:var(--panel);
+  }
+  .g-item img{
+    display:block;
+    width:100%;
+    height:auto;
+  }
+  .g-item figcaption{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    padding:8px 11px;
+    line-height:1.4;
+  }
+  @media (max-width:560px){
+    .research-gallery, .robot-gallery, .chassis-gallery{grid-template-columns:1fr;}
+    .g-item.g-wide{grid-column:auto;}
+  }
+  .diagram-label{
+    font-size:11px;
+    fill:var(--ink-soft);
+  }
+  .diagram-tag{
+    font-size:10.5px;
+    fill:var(--accent);
+    letter-spacing:0.04em;
+  }
+
+
+  /* ============ IMAGE LIGHTBOX ============ */
+  .image-lightbox{
+    position:fixed;
+    inset:0;
+    background:rgba(20,22,24,0.82);
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:32px;
+    z-index:200;
+  }
+  .image-lightbox.open{display:flex;}
+  .image-lightbox img{
+    max-width:min(94vw, 1200px);
+    max-height:90vh;
+    width:auto;
+    height:auto;
+    object-fit:contain;
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    box-shadow:0 20px 60px rgba(0,0,0,0.35);
+  }
+  .image-lightbox-close{
+    position:absolute;
+    top:16px;
+    right:20px;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:32px;
+    line-height:1;
+    cursor:pointer;
+    padding:6px;
+  }
+  .image-lightbox-close:hover{opacity:0.75;}
+  .g-item button.image-trigger{
+    display:block;
+    width:100%;
+    padding:0;
+    margin:0;
+    border:0;
+    background:transparent;
+    cursor:zoom-in;
+  }
+  .g-item button.image-trigger:focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:-2px;
+  }
+
+  /* ============ SKILLS ============ */
+  .skills-list{
+    display:grid;
+    grid-template-columns:140px 1fr;
+    row-gap:12px;
+    column-gap:16px;
+  }
+  .skills-list dt{
+    font-size:13.5px;
+    font-weight:600;
+    color:var(--ink);
+  }
+  .skills-list dd{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ EDUCATION ============ */
+  .edu-school{
+    font-weight:600;
+    font-size:16.5px;
+    margin-bottom:2px;
+  }
+  .edu-degree{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:12px;
+  }
+  .edu-awards{
+    font-size:14.5px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ CONTACT ============ */
+  .contact p{
+    color:var(--ink-soft);
+    max-width:52ch;
+    margin-bottom:24px;
+  }
+  .contact-links{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .contact-links a{
+    font-size:15px;
+    text-decoration:none;
+    border-bottom:1px solid var(--line);
+    padding-bottom:8px;
+    display:flex;
+    justify-content:space-between;
+    color:var(--ink);
+  }
+  .contact-links a span{color:var(--ink-soft); font-size:13.5px;}
+  .contact-links a:hover{color:var(--accent);}
+
+  footer{
+    padding:32px 0 56px;
+    font-size:13px;
+    color:var(--ink-soft);
+  }
+
+  /* ============ MODALS ============ */
+  .modal-overlay{
+    position:fixed;
+    inset:0;
+    background:rgba(20,22,24,0.45);
+    backdrop-filter:blur(2px);
+    display:none;
+    align-items:flex-start;
+    justify-content:center;
+    padding:64px 20px;
+    overflow-y:auto;
+    z-index:100;
+  }
+  .modal-overlay.open{display:flex;}
+  .modal-panel{
+    background:var(--bg);
+    border:1px solid var(--line);
+    border-radius:6px;
+    max-width:600px;
+    width:100%;
+    padding:36px;
+    position:relative;
+    box-shadow:0 12px 40px rgba(0,0,0,0.18);
+  }
+  .modal-close{
+    position:absolute;
+    top:16px;
+    right:16px;
+    background:none;
+    border:none;
+    font-size:20px;
+    line-height:1;
+    color:var(--ink-soft);
+    cursor:pointer;
+    padding:6px;
+  }
+  .modal-close:hover{color:var(--ink);}
+  .modal-panel h2{margin-bottom:20px;}
+  .modal-panel .about-body p{
+    color:var(--ink-soft);
+    margin-bottom:14px;
+    max-width:56ch;
+  }
+  .modal-panel .about-body p:last-child{margin-bottom:0;}
+
+  .entry{
+    margin-bottom:30px;
+  }
+  .entry:last-child{margin-bottom:0;}
+  .entry-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    flex-wrap:wrap;
+    gap:4px 16px;
+    margin-bottom:2px;
+  }
+  .entry-role{
+    font-weight:600;
+    font-size:16px;
+  }
+  .entry-date{
+    font-size:12.5px;
+    color:var(--ink-soft);
+    white-space:nowrap;
+  }
+  .entry-org{
+    font-size:13.5px;
+    color:var(--accent);
+    margin-bottom:9px;
+  }
+  .entry ul{
+    padding-left:18px;
+    color:var(--ink-soft);
+  }
+  .entry li{
+    margin-bottom:6px;
+    font-size:14.5px;
+  }
+  .entry li:last-child{margin-bottom:0;}
+
+  @media (max-width:560px){
+    .nav-right{gap:12px;}
+    .skills-list{grid-template-columns:1fr;}
+    .skills-list dt{margin-top:4px;}
+    .modal-panel{padding:26px;}
+  }
+
+  :focus-visible{
+    outline:2px solid var(--accent);
+    outline-offset:2px;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="nav-inner">
+    <div class="nav-name">Mio Crilley</div>
+    <ul class="nav-right">
+      <li><button type="button" data-modal-open="about">About</button></li>
+      <li><button type="button" data-modal-open="work">Work</button></li>
+      <li><a class="resume-link" href="resume.png" target="_blank" rel="noopener">Resume</a></li>
+    </ul>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <section class="hero">
+    <p class="kicker">Mechanical Engineering — Energy Concentration</p>
+    <h1>Hi, I'm Mio.</h1>
+    <p class="hero-sub">I'm a mechanical engineering student at the University of Michigan, graduating in May 2028.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="resume.png" target="_blank" rel="noopener">View Resume</a>
+      <a class="btn-secondary" href="#projects">See Projects</a>
+    </div>
+    <div class="hero-meta">
+      <span>Ann Arbor, MI</span>
+      <a href="mailto:crilleym@umich.edu">crilleym@umich.edu</a>
+      <a href="https://www.linkedin.com/in/miocrilley" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <p class="section-sub">A few things I've designed, built, and tested.</p>
+
+    <div class="proj">
+      <div class="robot-gallery">
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images of robot.png" data-lightbox-alt="CAD render of the pick-and-place robot" aria-label="Enlarge image">
+          <img src="project-images/CAD images of robot.png" alt="CAD render of the pick-and-place robot">
+        </button>
+        <figcaption>CAD assembly</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images top view.png" data-lightbox-alt="Top-view CAD render of the pick-and-place robot" aria-label="Enlarge image">
+          <img src="project-images/CAD images top view.png" alt="Top-view CAD render of the pick-and-place robot">
+        </button>
+        <figcaption>Top-view CAD</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Side view of robot draft.jpg" data-lightbox-alt="Side view draft of the pick-and-place robot" aria-label="Enlarge image">
+          <img src="project-images/Side view of robot draft.jpg" alt="Side view draft of the pick-and-place robot">
+        </button>
+        <figcaption>Side-view draft</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Top View of Robot draft.jpg" data-lightbox-alt="Top view draft of the pick-and-place robot" aria-label="Enlarge image">
+          <img src="project-images/Top View of Robot draft.jpg" alt="Top view draft of the pick-and-place robot">
+        </button>
+        <figcaption>Top-view draft</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 1.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot" aria-label="Enlarge image">
+          <img src="project-images/FPA 1.png" alt="First-principles analysis for the pick-and-place robot">
+        </button>
+        <figcaption>First-principles analysis I</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 2.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot, part two" aria-label="Enlarge image">
+          <img src="project-images/FPA 2.png" alt="First-principles analysis for the pick-and-place robot, part two">
+        </button>
+        <figcaption>First-principles analysis II</figcaption>
+        </figure>
+      </div>
+      <div class="proj-title">Pick-and-Place Robot</div>
+      <div class="proj-org">Manufacturing &amp; Design I — Team Lead</div>
+      <div class="proj-desc">A mobile robot with a hook arm, lasso & winch with rope design, built to pick up and move small objects reliably — tuned through a lot of trial, error, and re-machined parts. Iterated through multiple designs, CAD files, and physical prototypes. </div>
+    </div>
+
+    <div class="proj">
+      <div class="chassis-gallery">
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/First Drawings of Push Bar.jpg" data-lightbox-alt="First drawings of the Formula SAE push bar" aria-label="Enlarge image">
+          <img src="project-images/First Drawings of Push Bar.jpg" alt="First drawings of the Formula SAE push bar">
+        </button>
+        <figcaption>First push-bar drawings</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
+        </button>
+        <figcaption>Manufactured chassis insert</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Manufacturing setup for the chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Manufacturing setup for the chassis insert">
+        </button>
+        <figcaption>Manufacturing process</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="CAD modeling of the chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Modeling of chassis insert.png" alt="CAD modeling of the chassis insert">
+        </button>
+        <figcaption>Chassis insert modeling</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Finished push bar!.jpeg" data-lightbox-alt="Finished push bar mounted on the Formula SAE car, held by three team members" aria-label="Enlarge image">
+          <img src="project-images/Finished push bar!.jpeg" alt="Finished push bar mounted on the Formula SAE car, held by three team members">
+        </button>
+        <figcaption>Finished push bar</figcaption>
+        </figure>
+      </div>
+      <div class="proj-title">Chassis Insert Test Assembly</div>
+      <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
+      <div class="proj-desc">A chassis insert test fixture I created manufacturing drawings for, and an over-wing push bar I designed in Siemens NX and machined by hand.</div>
+    </div>
+
+    <div class="proj proj-research">
+      <div class="research-gallery">
+        <figure class="g-item g-wide">
+          <img src="project-images/kresling-methods.png" alt="Blender model of a Kresling unit, the 3D printer used to print samples, and the load frame test setup">
+          <figcaption>Blender model → 3D-printed sample → load frame test setup</figcaption>
+        </figure>
+        <figure class="g-item">
+          <img src="project-images/kresling-dims.png" alt="Dimensioned CAD diagram of the Kresling unit geometry and a multi-Kresling stack">
+          <figcaption>Kresling unit geometry (studied by D'Mello &amp; Hunter) and a multi-Kresling stack</figcaption>
+        </figure>
+        <figure class="g-item">
+          <img src="project-images/kresling-dic.png" alt="Digital image correlation photos of a Kresling tube twisting and collapsing under compression at four stages">
+          <figcaption>DIC imaging of the tube twisting and collapsing under load, stages 1–4</figcaption>
+        </figure>
+        <figure class="g-item g-wide">
+          <img src="project-images/kresling-charts.png" alt="Charts of rotation and load versus end shortening for the Kresling unit">
+          <figcaption>Rotation and load response as the tube compresses — the twist keeps increasing well past peak load</figcaption>
+        </figure>
+      </div>
+      <div class="proj-title">Kresling Tube Collapse Study</div>
+      <div class="proj-org">UM Aerospace Dept. Undergraduate Research — Fabrication &amp; Testing Lead</div>
+      <div class="proj-desc">An origami-inspired tube that collapses in a controlled, twisting motion under compression — designed to absorb energy the way a crumple zone does, but in a lighter, more predictable package. Presented at the UROP Symposium with Georgina Sanchez, Colin Hunter, and Royan D'Mello.</div>
+      <a class="proj-link" href="kresling-poster.pdf" target="_blank" rel="noopener">View Research Poster →</a>
+    </div>
+
+    <div class="proj">
+      <div class="chassis-gallery">
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/IMG_3765.jpeg" data-lightbox-alt="Playing drums on stage" aria-label="Enlarge image">
+          <img src="project-images/IMG_3765.jpeg" alt="Playing drums on stage">
+        </button>
+        <figcaption>Playing drums live</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/IMG_5220.jpeg" data-lightbox-alt="Drum kit after head replacement" aria-label="Enlarge image">
+          <img src="project-images/IMG_5220.jpeg" alt="Drum kit after head replacement">
+        </button>
+        <figcaption>After head replacement</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/IMG_5485.jpeg" data-lightbox-alt="Guitar saddle and bridge replacement" aria-label="Enlarge image">
+          <img src="project-images/IMG_5485.jpeg" alt="Guitar saddle and bridge replacement">
+        </button>
+        <figcaption>Saddle &amp; bridge replacement</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/IMG_5488.jpeg" data-lightbox-alt="Instrument repair work" aria-label="Enlarge image">
+          <img src="project-images/IMG_5488.jpeg" alt="Instrument repair work">
+        </button>
+        <figcaption>Guitar string &amp; neck work</figcaption>
+        </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/IMG_5594.jpeg" data-lightbox-alt="Instrument repair work" aria-label="Enlarge image">
+          <img src="project-images/IMG_5594.jpeg" alt="Instrument repair work">
+        </button>
+        <figcaption>Finished repair</figcaption>
+        </figure>
+      </div>
+      <div class="proj-title">Instrument Technician</div>
+      <div class="proj-org">Drums &amp; Guitars — 5+ Years Experience</div>
+      <div class="proj-desc">Ongoing hands-on instrument repair and maintenance work. I've replaced drum heads, legs, and wraps, along with guitar bridges, strings, and necks.</div>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills-list">
+      <dt>CAD &amp; Design</dt>
+      <dd>Siemens NX, SolidWorks, CATIA, Blender, GD&amp;T</dd>
+      <dt>Programming</dt>
+      <dd>MATLAB, C++</dd>
+      <dt>Fabrication</dt>
+      <dd>Manual mill, lathe, horizontal band saw, carbon layup, prototyping</dd>
+      <dt>Productivity</dt>
+      <dd>Excel, PowerPoint, Word</dd>
+      <dt>Languages</dt>
+      <dd>English (native), Japanese (proficient)</dd>
+    </dl>
+  </section>
+
+  <section id="education">
+    <h2>Education</h2>
+    <div class="edu-school">University of Michigan, Ann Arbor</div>
+    <div class="edu-degree">B.S.E. in Mechanical Engineering, Energy Concentration — Expected May 2028 · GPA 3.32/4.0</div>
+    <div class="edu-awards">Dean's List · University Honors · William J. Branstrom Freshman Prize · Blue Ribbon, UROP Symposium</div>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p>I'm looking for co-ops, internships, and full-time roles in mechanical and energy systems engineering. Feel free to reach out.</p>
+    <div class="contact-links">
+      <a href="mailto:crilleym@umich.edu">Email <span>crilleym@umich.edu</span></a>
+      <a href="https://www.linkedin.com/in/miocrilley" target="_blank" rel="noopener">LinkedIn <span>/in/miocrilley</span></a>
+      <a href="tel:2487046569">Phone <span>248.704.6569</span></a>
+    </div>
+  </section>
+
+  <footer>© 2026 Mio Crilley</footer>
+
+</div>
+
+<!-- ============ ABOUT MODAL ============ -->
+<div class="modal-overlay" id="modal-about">
+  <div class="modal-panel">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h2>About</h2>
+    <div class="about-body">
+      <p>I'm a student leader with 3+ years of internship, research &amp; project team experience.</p>
+      <p>I've worked on mitigating external corrosion of major city gas distribution pipelines, redesigned seat ventilation systems at Adient that's expected to save $358K a year, and have built some keyboards and robots on the side. I also lead fabrication for a university research project and designed parts for Michigan's Formula SAE team.</p>
+      <p>I also spend time teaching — I'm a peer facilitator for 35 students through UROP. Outside of work, I love to travel, try new recipes, &amp; pick a book from my TBR list which is 100+ books long.</p>
+    </div>
+  </div>
+</div>
+
+<!-- ============ WORK MODAL ============ -->
+<div class="modal-overlay" id="modal-work">
+  <div class="modal-panel">
+    <button class="modal-close" data-modal-close aria-label="Close">&times;</button>
+    <h2>Work Experience</h2>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Co-op, Gas Engineering Standards Services</span>
+        <span class="entry-date">Aug 2026 — May 2027</span>
+      </div>
+      <div class="entry-org">Consumers Energy · Livonia, MI</div>
+      <ul>
+        <li>Develop and revise enterprise engineering standards governing methane emissions measurement, collection, and net-zero reporting across gas operations.</li>
+        <li>Author and update Electrical, Instrumentation &amp; Controls (EI&amp;C) standards supporting design, operation, and maintenance of gas infrastructure.</li>
+        <li>Lead conversion and modernization of 20+ legacy technical documents into internal templates.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Peer Facilitator, UROP</span>
+        <span class="entry-date">Aug 2026 — May 2027</span>
+      </div>
+      <div class="entry-org">University of Michigan Undergraduate Instructor · Ann Arbor, MI</div>
+      <ul>
+        <li>Instruct a cohort of 35 peers within the Undergraduate Research Opportunities Program.</li>
+        <li>Manage 1-on-1 consultations and targeted review sessions to support academic and professional development.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Gas Engineering Intern, External Corrosion</span>
+        <span class="entry-date">May 2026 — Aug 2026</span>
+      </div>
+      <div class="entry-org">Consumers Energy · Livonia, MI</div>
+      <ul>
+        <li>Analyzed external corrosion on gas distribution and transmission pipelines using the Direct Assessment process across 15+ excavations.</li>
+        <li>Managed facilities attribute data and historical information for 3 citygates and 2 valve sites.</li>
+        <li>Organized and renamed 800+ Owl test stations to improve BSI database accuracy.</li>
+      </ul>
+    </div>
+
+    <div class="entry">
+      <div class="entry-head">
+        <span class="entry-role">Complete Seat Engineering Intern</span>
+        <span class="entry-date">May 2025 — Aug 2025</span>
+      </div>
+      <div class="entry-org">Adient — General Motors Business Unit · Plymouth, MI</div>
+      <ul>
+        <li>Redesigned the ventilation system for a GM production seat, projecting $358K in annual savings and an 8-second reduction in JIT assembly takt time.</li>
+        <li>Developed and executed a tactical engineering plan, managing a global team of product engineers.</li>
+        <li>Applied root cause analysis via Adient's Basic Engineering Process to resolve cushion airflow performance issues.</li>
+        <li>Ran Complete Seat Airflow and Steady State Heat Flux tests in the Thermal Comfort Lab, comparing results against FEA and visualizing test data to evaluate cooling effectiveness.</li>
+        <li>Rebuilt seats and prototyped custom foam airflow test fixtures.</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
+<div class="image-lightbox" id="image-lightbox" role="dialog" aria-modal="true" aria-label="Expanded project image">
+  <button class="image-lightbox-close" type="button" aria-label="Close image">&times;</button>
+  <img id="image-lightbox-img" src="" alt="">
+</div>
+
+<script>
+
+  const lightbox = document.getElementById('image-lightbox');
+  const lightboxImg = document.getElementById('image-lightbox-img');
+  const lightboxClose = lightbox.querySelector('.image-lightbox-close');
+  const imageTriggers = document.querySelectorAll('.image-trigger');
+
+  function openLightbox(src, alt){
+    lightboxImg.src = src;
+    lightboxImg.alt = alt || '';
+    lightbox.classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxImg.src = '';
+    document.body.style.overflow = '';
+  }
+  imageTriggers.forEach(btn => {
+    btn.addEventListener('click', () => openLightbox(btn.dataset.lightboxSrc, btn.dataset.lightboxAlt));
+  });
+  lightboxClose.addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => {
+    if(e.target === lightbox) closeLightbox();
+  });
+
+  const openButtons = document.querySelectorAll('[data-modal-open]');
+  const closeButtons = document.querySelectorAll('[data-modal-close]');
+  const overlays = document.querySelectorAll('.modal-overlay');
+
+  function openModal(id){
+    const modal = document.getElementById('modal-' + id);
+    if(modal){ modal.classList.add('open'); document.body.style.overflow = 'hidden'; }
+  }
+  function closeAllModals(){
+    overlays.forEach(o => o.classList.remove('open'));
+    document.body.style.overflow = '';
+  }
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', () => openModal(btn.dataset.modalOpen));
+  });
+  closeButtons.forEach(btn => {
+    btn.addEventListener('click', closeAllModals);
+  });
+  overlays.forEach(overlay => {
+    overlay.addEventListener('click', (e) => {
+      if(e.target === overlay) closeAllModals();
+    });
+  });
+  document.addEventListener('keydown', (e) => {
+    if(e.key === 'Escape'){ closeAllModals(); closeLightbox(); }
+  });
+</script>
+
+</body>
+</html>
