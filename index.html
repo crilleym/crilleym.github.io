@@ -350,6 +350,10 @@
   }
   .stage-body p{margin-bottom:10px;}
   .stage-body p:last-child{margin-bottom:0;}
+  .stage-body ul{padding-left:18px; margin-bottom:10px;}
+  .stage-body ul:last-child{margin-bottom:0;}
+  .stage-body li{margin-bottom:5px;}
+  .stage-body li:last-child{margin-bottom:0;}
   .stage-gallery{
     display:grid;
     grid-template-columns:repeat(2, 1fr);
@@ -951,9 +955,33 @@
         <div class="stage-timeline">
 
           <div class="stage">
-            <div class="stage-label">Problem &amp; requirements</div>
+            <div class="stage-label">Goal</div>
             <div class="stage-body">
-              <p>Chassis inserts have to be trusted to carry real structural load on the car, so before any insert design goes on the chassis it needs to be physically validated against its design loads. My job was to design the test assembly that would let us actually apply those loads to insert specimens in a controlled, repeatable way, and generate a full manufacturing package so the fixture could be built to the tolerances the test required.</p>
+              <p>Design, test, and qualify carbon-fiber two-force members for MR25 — bonded-in aluminum inserts, similar in concept to the ones already used on our steering column, so the load path from a solid metal fitting into a hollow carbon tube would be well understood before we trusted it anywhere else on the car.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Design considerations &amp; variables</div>
+            <div class="stage-body">
+              <p>Before sizing a single insert, I mapped out everything that could actually affect a bonded joint's real-world strength, so the test matrix wouldn't just be guesswork:</p>
+              <ul>
+                <li>Bond area / bond length</li>
+                <li>Bond thickness — i.e. the depth of the groove cut into the insert</li>
+                <li>Epoxy type</li>
+                <li>Strength in tension vs. compression (bonded joints don't necessarily behave the same in both)</li>
+                <li>Fatigue life and long-term carbon aging</li>
+                <li>Rod-end fit and interface</li>
+                <li>DFMEA / PFMEA — design- and process-level failure modes to catch before they became real failures</li>
+                <li>Whether testing needed to be destructive to actually find the failure load</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Benchmarking &amp; key decisions</div>
+            <div class="stage-body">
+              <p>Rather than guess at a bond length, I checked in with RIT's FSAE team, who'd found that bond strength shows diminishing returns past about 1 inch — so we adopted a 1" bond length as our baseline instead of over-building the joint for no real strength gain. We also settled on aluminum inserts, consistent with the approach already proven on our steering column, rather than introducing a new insert material to validate from scratch.</p>
             </div>
           </div>
 
@@ -974,7 +1002,7 @@
           <div class="stage">
             <div class="stage-label">Fabrication</div>
             <div class="stage-body">
-              <p>The fixture components were machined from those drawings and assembled for testing.</p>
+              <p>The fixture components and insert specimens — made at different bonding lengths so we could isolate bond length as a variable — were machined from those drawings and assembled for testing.</p>
             </div>
             <div class="stage-gallery">
               <figure class="g-item">
@@ -989,6 +1017,13 @@
               </button>
               <figcaption>Manufactured insert, ready for testing</figcaption>
               </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Testing</div>
+            <div class="stage-body">
+              <p>Specimens are pull/compression-tested on an Instron-type load frame, run to failure so the destructive test actually reveals the true failure load and mode rather than just an assumed value — tested in both tension and compression, since carbon-to-metal bonded joints can fail differently depending on load direction.</p>
             </div>
           </div>
 
