@@ -740,14 +740,51 @@
           <div class="stage">
             <div class="stage-label">The challenge</div>
             <div class="stage-body">
-              <p>The brief was a mobile robot that could travel a course, locate a target object, and pick it up and place it — using only a hook arm and a lasso-and-winch mechanism rather than a gripper. As team lead, I drove the concept, the analysis behind it, and the build.</p>
+              <p>The brief was a mobile robot competing in a Wild-West-themed course: open a saloon door, collect lassos, drive up a mountain, and place lassos on a horse — split across four robots (RMP1–4) working the course together. As team lead, I owned the strategy for our robot (RMP3), the concept selection, the analysis behind the mechanisms, and the build.</p>
             </div>
           </div>
 
           <div class="stage">
-            <div class="stage-label">First-principles analysis</div>
+            <div class="stage-label">Strategy &amp; requirements</div>
             <div class="stage-body">
-              <p>Before committing to a CAD layout, I worked through the mechanism from first principles — the geometry and force requirements for the lasso-and-winch to actually cinch and lift the target, and the hook arm's reach and range of motion needed to position it. That analysis set the constraints (arm length, winch torque, mounting points) that the CAD design then had to satisfy.</p>
+              <p>With four robots on the course at once, RMP3's role came down to sequencing: let the other robots start their own objectives immediately, then make RMP3 the team's most reliable lasso-scorer. The selected strategy was:</p>
+              <ul>
+                <li>Let RMP1 and RMP4 open the saloon door themselves and get moving right away</li>
+                <li>Collect the prairie lassos</li>
+                <li>Drive up the mountain and place lassos on the horse</li>
+                <li>Meet RMP2 and place any lassos it didn't get to</li>
+                <li>Park in the mountain's first-tier spot</li>
+                <li>If time remains, help with the track objective</li>
+              </ul>
+              <p>We picked this order because lasso placement scored more consistently than the team's other soft-object task (hanging hats), so it made sense to have one robot specialize in it; acting as a backup lasso-placer for RMP2 also added robustness if another robot ran into delays, and the optional track work kept RMP3 productive if lassos were finished early.</p>
+              <p>That strategy set three functional requirements, each with a target and an allowable margin of error:</p>
+              <ul>
+                <li><strong>Grab the door handle within 20 s</strong> (–4 s margin) — early enough that the other RMPs have time to get through the door; the margin accounts for realistic variability like parking position and motor start lag.</li>
+                <li><strong>Open the door to at least 60°</strong> (–8° margin) — comfortably enough for a 10"×10" robot to clear the doorway (27.4·sin θ gives roughly 21.6" at 52° and 23.8" at 60°, both well past the 10" needed).</li>
+                <li><strong>Place at least 3 lassos on the horse</strong> (–1 lasso margin) — allows for one missed attempt while still proving the mechanism reliably scores.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Concept selection — Pugh chart</div>
+            <div class="stage-body">
+              <p>Four early concepts were scored against those three requirements plus manufacturability and creativity, weighted by importance:</p>
+              <p><strong>Cully #1 (baseline) — forklift-style up/down-and-pivot arm.</strong> Plausible for both the door and the lassos, and the pivoting motion gives a way to apply torque to the handle, but it likely relies on near-perfect arm placement, risks instability, and the forklift mechanism itself is difficult to manufacture.</p>
+              <p><strong>Samaria #1 — vertical lift + in/out arm, front latch hook for the door (+3).</strong> Once hooked, the door pull is strong and reliable — the main tradeoff is that handle acquisition is alignment-sensitive, and the extending arm is harder to build and no more accurate at placing lassos than the baseline.</p>
+              <p><strong>Leo #2 — telescoping arm with horizontal jaws (–5).</strong> Simple and creative to build, but the jaws are prone to slipping off the handle unless the pull lines up almost exactly tangent to the door's swing, and placing lassos accurately with it proved difficult.</p>
+              <p><strong>Mio #1 — double arm with lasso storage, hook/claw for the door, omni wheels (+5).</strong> A dedicated hook made handle acquisition strong and the build straightforward, but door-opening stability depended on traction and geometry rather than being a clear win over baseline, and carrying lassos in a storage rack didn't by itself guarantee accurate placement.</p>
+              <p>Mio #1 and Samaria #1 scored highest, but neither fully satisfied every requirement on its own. The design that actually won out combined Leo's pulley arm with Mio's hook arm: Leo's mechanism scored well on manufacturability and lasso handling, and Mio's dedicated hook solved the door problem more reliably than a claw or latch. Re-scored as a hybrid, that combined design came out on top at +14 — a dedicated hook arm for the handle instead of a finicky claw, and a drivetrain-assisted pull once hooked, for a secure, forceful door-open.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Key trade studies</div>
+            <div class="stage-body">
+              <p>Three subsystem decisions needed real analysis before they went into CAD:</p>
+              <p><strong>Drivetrain gear ratio (first-principles analysis).</strong> Getting up the ramp to reach the horse was itself a functional requirement, so I balanced gear ratio against motor torque and speed: too low a ratio risked the motor stalling and the robot rolling back down the ramp; too high made the climb needlessly slow. The analysis found the ratio that could make the climb without stalling, without giving up more speed elsewhere than necessary.</p>
+              <p><strong>Hook throat length (empirical test).</strong> The hook arm carried our hardest requirement — open the door in under 20 seconds — so after sizing it analytically I tested the throat length empirically: too short and the hook slips off the handle mid-pull; too long and it can't maneuver into the handle in the first place. Testing found the length that maximized grip while still fitting the handle geometry cleanly.</p>
+              <p><strong>Winch torque on the pulley arm (first-principles analysis).</strong> The pulley arm both retrieves and places lassos, so too little torque and it can't lift the arm or get a lasso over the horse; too much and fine positioning gets sloppy, which hurts placement accuracy. The analysis set the torque needed to lift and hold the arm steady without sacrificing the control needed for accurate placement.</p>
             </div>
             <div class="stage-gallery">
               <figure class="g-item">
