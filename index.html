@@ -281,6 +281,110 @@
     letter-spacing:0.04em;
   }
 
+  /* ============ EXPANDABLE PROJECT BREAKDOWNS ============ */
+  .proj-details{
+    margin-top:2px;
+  }
+  .proj-toggle{
+    display:inline-flex;
+    align-items:center;
+    gap:7px;
+    margin-top:14px;
+    background:none;
+    border:1px solid var(--line);
+    color:var(--accent);
+    font-family:inherit;
+    font-size:13.5px;
+    font-weight:500;
+    padding:9px 16px;
+    border-radius:3px;
+    cursor:pointer;
+    user-select:none;
+    transition:border-color 0.15s ease, background 0.15s ease;
+  }
+  .proj-toggle::-webkit-details-marker{display:none;}
+  .proj-toggle::marker{content:'';}
+  .proj-toggle:hover{border-color:var(--accent); background:rgba(63,95,115,0.06);}
+  .proj-toggle .chevron{
+    display:inline-block;
+    font-size:12px;
+    transition:transform 0.18s ease;
+  }
+  details[open] > .proj-toggle .chevron{transform:rotate(90deg);}
+  details[open] > .proj-toggle .chevron-label-open{display:inline;}
+  details[open] > .proj-toggle .chevron-label-closed{display:none;}
+  .proj-toggle .chevron-label-open{display:none;}
+
+  .stage-timeline{
+    position:relative;
+    margin:28px 0 6px;
+    padding-left:24px;
+    border-left:2px solid var(--line);
+  }
+  .stage{
+    position:relative;
+    margin-bottom:36px;
+  }
+  .stage:last-child{margin-bottom:4px;}
+  .stage::before{
+    content:'';
+    position:absolute;
+    left:-29px;
+    top:3px;
+    width:9px;
+    height:9px;
+    border-radius:50%;
+    background:var(--accent);
+    box-shadow:0 0 0 3px var(--bg);
+  }
+  .stage-label{
+    font-size:14px;
+    font-weight:600;
+    color:var(--ink);
+    margin-bottom:7px;
+  }
+  .stage-body{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin-bottom:14px;
+  }
+  .stage-body p{margin-bottom:10px;}
+  .stage-body p:last-child{margin-bottom:0;}
+  .stage-gallery{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:10px;
+  }
+  .stage-gallery.stage-gallery-1{grid-template-columns:1fr;}
+  .stage-gallery.stage-gallery-3{grid-template-columns:repeat(3, 1fr);}
+  .stage-gallery .g-item img{
+    aspect-ratio:4 / 3;
+    object-fit:contain;
+    padding:8px;
+  }
+  .stage-video{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-radius:4px;
+    overflow:hidden;
+    margin-bottom:4px;
+  }
+  .stage-video video{
+    display:block;
+    width:100%;
+    height:auto;
+    background:#111;
+  }
+  .stage-video figcaption{
+    font-size:11.5px;
+    color:var(--ink-soft);
+    padding:8px 11px;
+    line-height:1.4;
+  }
+  @media (max-width:560px){
+    .stage-gallery, .stage-gallery.stage-gallery-3{grid-template-columns:1fr;}
+  }
+
 
   /* ============ IMAGE LIGHTBOX ============ */
   .image-lightbox{
@@ -529,89 +633,191 @@
       <div class="proj-org">UM Aerospace Dept. Undergraduate Research — Fabrication &amp; Testing Lead</div>
       <div class="proj-desc">An origami-inspired tube that collapses in a controlled, twisting motion under compression, designed to absorb and dissipate energy in a lighter, more predictable structure for potential aerospace applications. I led fabrication and experimental testing, connecting structural mechanics and energy absorption to 3D printing, load-frame stress vs. strain analysis, and Digital Image Correlation. Presented at the UROP Symposium with Georgina Sanchez, Colin Hunter, and Royan D'Mello.</div>
       <a class="proj-link" href="kresling-poster.pdf" target="_blank" rel="noopener">View Research Poster →</a>
+
       <div class="research-gallery">
         <figure class="g-item g-wide">
           <img src="project-images/kresling-methods.png" alt="Blender model of a Kresling unit, the 3D printer used to print samples, and the load frame test setup">
           <figcaption>Blender model → 3D-printed sample → load frame test setup</figcaption>
         </figure>
-        <figure class="g-item">
-          <img src="project-images/kresling-dims.png" alt="Dimensioned CAD diagram of the Kresling unit geometry and a multi-Kresling stack">
-          <figcaption>Kresling unit geometry (studied by D'Mello &amp; Hunter) and a multi-Kresling stack</figcaption>
-        </figure>
-        <figure class="g-item">
-          <img src="project-images/kresling-dic.png" alt="Digital image correlation photos of a Kresling tube twisting and collapsing under compression at four stages">
-          <figcaption>DIC imaging of the tube twisting and collapsing under load, stages 1–4</figcaption>
-        </figure>
-        <figure class="g-item g-wide">
-          <img src="project-images/kresling-charts.png" alt="Charts of rotation and load versus end shortening for the Kresling unit">
-          <figcaption>Rotation and load response as the tube compresses. The twist keeps increasing well past peak load</figcaption>
-        </figure>
       </div>
-      
-      
+
+      <details class="proj-details">
+        <summary class="proj-toggle">
+          <span class="chevron">▸</span>
+          <span class="chevron-label-closed">See the full collapse study</span>
+          <span class="chevron-label-open">Hide full collapse study</span>
+        </summary>
+
+        <div class="stage-timeline">
+          <div class="stage">
+            <div class="stage-label">Why a Kresling tube</div>
+            <div class="stage-body">
+              <p>Traditional crush structures (foam blocks, honeycomb) absorb impact energy but fail unpredictably once they buckle. A Kresling pattern is an origami tessellation that, under axial compression, collapses along pre-defined fold lines instead of crumpling randomly — so the way it fails is repeatable and can be tuned by geometry alone. That predictability is what makes it interesting for aerospace energy-absorption applications like landing shock or deployable structures, where you want to know exactly how much energy a structure will absorb before it's ever loaded.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Modeling the unit geometry</div>
+            <div class="stage-body">
+              <p>Royan D'Mello and Colin Hunter worked out the Kresling unit geometry and how individual units stack into a multi-unit tube. I modeled that geometry in Blender to generate accurate, printable solids from the fold-pattern math, at both the single-unit and stacked-tube scale.</p>
+            </div>
+            <div class="stage-gallery stage-gallery-1">
+              <figure class="g-item">
+                <img src="project-images/kresling-dims.png" alt="Dimensioned CAD diagram of the Kresling unit geometry and a multi-Kresling stack">
+                <figcaption>Kresling unit geometry and a multi-Kresling stack, dimensioned from D'Mello &amp; Hunter's model</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Fabrication &amp; test setup</div>
+            <div class="stage-body">
+              <p>I 3D-printed the tube samples directly from the Blender models and set them up in a load frame to run compression tests, pairing the load-frame's stress/strain output with Digital Image Correlation (DIC) cameras so I could correlate the numeric load data against exactly how the tube was deforming in space at any point in the test.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Testing &amp; what the tube actually does</div>
+            <div class="stage-body">
+              <p>DIC imaging captured the tube twisting as it collapsed under load, shown below across four stages of a single compression run. The twisting isn't a side effect — it's the mechanism that lets the tube fold along its Kresling creases instead of buckling randomly.</p>
+            </div>
+            <div class="stage-gallery stage-gallery-1">
+              <figure class="g-item">
+                <img src="project-images/kresling-dic.png" alt="Digital image correlation photos of a Kresling tube twisting and collapsing under compression at four stages">
+                <figcaption>DIC imaging of the tube twisting and collapsing under load, stages 1–4</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Result</div>
+            <div class="stage-body">
+              <p>Plotting rotation and load against end-shortening showed that the twist keeps increasing well past peak load — the tube keeps rotating and folding even after it stops carrying more force, which is exactly the "graceful," predictable failure behavior the geometry is meant to produce instead of a sudden structural collapse. We presented these findings, along with the fabrication and DIC methodology, at the UROP Symposium.</p>
+            </div>
+            <div class="stage-gallery stage-gallery-1">
+              <figure class="g-item">
+                <img src="project-images/kresling-charts.png" alt="Charts of rotation and load versus end shortening for the Kresling unit">
+                <figcaption>Rotation and load response as the tube compresses</figcaption>
+              </figure>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="proj">
 <div class="proj-title">Pick-and-Place Robot</div>
       <div class="proj-org">Manufacturing &amp; Design I — Team Lead</div>
       <div class="proj-desc">Led the design, analysis, fabrication, and iteration of a mobile pick-and-place robot with a hook arm and lasso-and-winch mechanism.</div>
+
       <div class="robot-gallery">
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images of robot.png" data-lightbox-alt="CAD render of the pick-and-place robot" aria-label="Enlarge image">
-          <img src="project-images/CAD images of robot.png" alt="CAD render of the pick-and-place robot">
-        </button>
-        <figcaption>CAD assembly</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images top view.png" data-lightbox-alt="Top-view CAD render of the pick-and-place robot" aria-label="Enlarge image">
-          <img src="project-images/CAD images top view.png" alt="Top-view CAD render of the pick-and-place robot">
-        </button>
-        <figcaption>Top-view CAD</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Side view of robot draft.jpg" data-lightbox-alt="Side view draft of the pick-and-place robot" aria-label="Enlarge image">
-          <img src="project-images/Side view of robot draft.jpg" alt="Side view draft of the pick-and-place robot">
-        </button>
-        <figcaption>Side-view draft</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Top View of Robot draft.jpg" data-lightbox-alt="Top view draft of the pick-and-place robot" aria-label="Enlarge image">
-          <img src="project-images/Top View of Robot draft.jpg" alt="Top view draft of the pick-and-place robot">
-        </button>
-        <figcaption>Top-view draft</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 1.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot" aria-label="Enlarge image">
-          <img src="project-images/FPA 1.png" alt="First-principles analysis for the pick-and-place robot">
-        </button>
-        <figcaption>First-principles analysis I</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 2.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot, part two" aria-label="Enlarge image">
-          <img src="project-images/FPA 2.png" alt="First-principles analysis for the pick-and-place robot, part two">
-        </button>
-        <figcaption>First-principles analysis II</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/robotatcomp.PNG" data-lightbox-alt="Pick-and-place robot at competition" aria-label="Enlarge image">
-            <img src="project-images/robotatcomp.PNG" alt="Pick-and-place robot at competition">
-          </button>
-          <figcaption>Robot at competition</figcaption>
-        </figure>
         <figure class="g-item">
           <button class="image-trigger" type="button" data-lightbox-src="project-images/robotfinished.PNG" data-lightbox-alt="Completed pick-and-place robot" aria-label="Enlarge image">
             <img src="project-images/robotfinished.PNG" alt="Completed pick-and-place robot">
           </button>
           <figcaption>Completed robot</figcaption>
         </figure>
+        <figure class="g-item">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/robotatcomp.PNG" data-lightbox-alt="Pick-and-place robot at competition" aria-label="Enlarge image">
+            <img src="project-images/robotatcomp.PNG" alt="Pick-and-place robot at competition">
+          </button>
+          <figcaption>At competition</figcaption>
+        </figure>
       </div>
-      
+
+      <details class="proj-details">
+        <summary class="proj-toggle">
+          <span class="chevron">▸</span>
+          <span class="chevron-label-closed">See the full design process</span>
+          <span class="chevron-label-open">Hide full design process</span>
+        </summary>
+
+        <div class="stage-timeline">
+          <div class="stage">
+            <div class="stage-label">The challenge</div>
+            <div class="stage-body">
+              <p>The brief was a mobile robot that could travel a course, locate a target object, and pick it up and place it — using only a hook arm and a lasso-and-winch mechanism rather than a gripper. As team lead, I drove the concept, the analysis behind it, and the build.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">First-principles analysis</div>
+            <div class="stage-body">
+              <p>Before committing to a CAD layout, I worked through the mechanism from first principles — the geometry and force requirements for the lasso-and-winch to actually cinch and lift the target, and the hook arm's reach and range of motion needed to position it. That analysis set the constraints (arm length, winch torque, mounting points) that the CAD design then had to satisfy.</p>
+            </div>
+            <div class="stage-gallery">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 1.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot" aria-label="Enlarge image">
+                <img src="project-images/FPA 1.png" alt="First-principles analysis for the pick-and-place robot">
+              </button>
+              <figcaption>First-principles analysis I</figcaption>
+              </figure>
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/FPA 2.png" data-lightbox-alt="First-principles analysis for the pick-and-place robot, part two" aria-label="Enlarge image">
+                <img src="project-images/FPA 2.png" alt="First-principles analysis for the pick-and-place robot, part two">
+              </button>
+              <figcaption>First-principles analysis II</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Layout drafts</div>
+            <div class="stage-body">
+              <p>I sketched side- and top-view layouts to work out where the drivetrain, winch, and hook arm needed to sit relative to each other before moving into CAD, so the arm's swing and the winch's cable run wouldn't collide with the chassis or each other.</p>
+            </div>
+            <div class="stage-gallery">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/Side view of robot draft.jpg" data-lightbox-alt="Side view draft of the pick-and-place robot" aria-label="Enlarge image">
+                <img src="project-images/Side view of robot draft.jpg" alt="Side view draft of the pick-and-place robot">
+              </button>
+              <figcaption>Side-view draft</figcaption>
+              </figure>
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/Top View of Robot draft.jpg" data-lightbox-alt="Top view draft of the pick-and-place robot" aria-label="Enlarge image">
+                <img src="project-images/Top View of Robot draft.jpg" alt="Top view draft of the pick-and-place robot">
+              </button>
+              <figcaption>Top-view draft</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">CAD &amp; fabrication</div>
+            <div class="stage-body">
+              <p>The drafts became a full CAD assembly, which I used to finalize part geometry, check clearances, and hand off for fabrication and wiring.</p>
+            </div>
+            <div class="stage-gallery">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images of robot.png" data-lightbox-alt="CAD render of the pick-and-place robot" aria-label="Enlarge image">
+                <img src="project-images/CAD images of robot.png" alt="CAD render of the pick-and-place robot">
+              </button>
+              <figcaption>CAD assembly</figcaption>
+              </figure>
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/CAD images top view.png" data-lightbox-alt="Top-view CAD render of the pick-and-place robot" aria-label="Enlarge image">
+                <img src="project-images/CAD images top view.png" alt="Top-view CAD render of the pick-and-place robot">
+              </button>
+              <figcaption>Top-view CAD</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Final result</div>
+            <div class="stage-body">
+              <p>The finished robot ran the course at competition using the hook arm and lasso-and-winch mechanism as designed.</p>
+            </div>
+          </div>
+        </div>
+      </details>
     </div>
 
     <div class="proj">
-<div class="proj-title">Chassis Insert Test Assembly &amp; Over-Wing Push Bar</div>
+<div class="proj-title">Over-Wing Push Bar</div>
       <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
-      <div class="proj-desc">A chassis insert test fixture for which I created manufacturing drawings, and an over-wing push bar I designed in Siemens NX and aided machining by hand.</div>
+      <div class="proj-desc">Collaborated on a 4-person team to design and manually machine a push bar mounted over the rear wing of a 420-lb Formula SAE car, replacing a previous design that was awkward to install and use. I owned the bucket/mount subassembly, the hand-calculated free-body analysis behind the mounting loads, several of the manufacturing drawings, and helped hand-machine the final parts.</div>
+
       <div class="chassis-gallery">
         <figure class="g-item">
           <button class="image-trigger" type="button" data-lightbox-src="project-images/First Drawings of Push Bar.jpg" data-lightbox-alt="First drawings of the Formula SAE push bar" aria-label="Enlarge image">
@@ -620,17 +826,107 @@
         <figcaption>First push-bar drawings</figcaption>
         </figure>
         <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
-          <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Finished push bar!.jpeg" data-lightbox-alt="Finished push bar mounted on the Formula SAE car, held by three team members" aria-label="Enlarge image">
+          <img src="project-images/Finished push bar!.jpeg" alt="Finished push bar mounted on the Formula SAE car, held by three team members">
         </button>
-        <figcaption>Manufactured chassis insert</figcaption>
+        <figcaption>Finished push bar</figcaption>
         </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Manufacturing setup for the chassis insert" aria-label="Enlarge image">
-          <img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Manufacturing setup for the chassis insert">
-        </button>
-        <figcaption>Manufacturing process</figcaption>
-        </figure>
+      </div>
+
+      <details class="proj-details">
+        <summary class="proj-toggle">
+          <span class="chevron">▸</span>
+          <span class="chevron-label-closed">See the full design-to-final-fit breakdown</span>
+          <span class="chevron-label-open">Hide full design-to-final-fit breakdown</span>
+        </summary>
+
+        <div class="stage-timeline">
+
+          <div class="stage">
+            <div class="stage-label">Problem &amp; requirements</div>
+            <div class="stage-body">
+              <p>Our car needed a way for one person to push it from behind without leaning on the rear aero package — the previous push bar design was awkward to install and get onto the roll hoop, especially working from behind the car. We set out to replace it with a bar that mounted over the rear wing, bolted onto the roll hoop, and was simple enough for one person to install and use. I worked on a 4-person team, owning the bucket/mounting subassembly, the hand free-body analysis, part of the manufacturing drawing set, and hand-machining.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Free-body diagram &amp; hand calcs</div>
+            <div class="stage-body">
+              <p>I modeled the push bar as a beam: the horizontal handle picks up the pushing load, and that load has to react through the two vertical legs into the roll-hoop mounting points. I sketched it out as a simply-supported/overhung beam and solved for the reaction forces at each mount (F<sub>R1</sub>, F<sub>R2</sub>) so I knew what the mounting brackets and their bolts actually had to carry — instead of just guessing at fastener sizes.</p>
+              <p>I also had to answer a more basic question: could one person actually hold the vertical-bar assembly up against the roll hoop while installing it, or would it need a second set of hands? I modeled the assembly in NX, assigned it 6061 aluminum, and pulled its mass — 2.41 lb. To sanity-check what a person can comfortably hold out at arm's length, I'd tried a similar hand-calculation the day before for a class problem (holding a weight on the end of a broomstick) and actually tested it by hand, which put the practical one-person limit around 4 lb. At 2.41 lb, the vertical-bar assembly cleared that with margin, so we knew installation wouldn't need a second person just to hold it steady.</p>
+            </div>
+            <div class="stage-gallery stage-gallery-1">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-fbd-whiteboard.jpg" data-lightbox-alt="Whiteboard free-body diagram of the push bar showing reaction forces at the two roll-hoop mounts" aria-label="Enlarge image">
+                <img src="project-images/push-bar-fbd-whiteboard.jpg" alt="Whiteboard free-body diagram of the push bar showing reaction forces at the two roll-hoop mounts">
+              </button>
+              <figcaption>Hand free-body diagram: handle load reacted through the two roll-hoop mounting points (F<sub>R1</sub>, F<sub>R2</sub>)</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Design review — what almost went wrong</div>
+            <div class="stage-body">
+              <p>Before anything got machined, our CAD review turned up a few things that would have been real problems on the car:</p>
+              <p><strong>Bolt clearance:</strong> one of the through-bolts on the vertical-bar mount would have interfered with the roll hoop itself. We fixed it by moving to a fine-thread bolt tapped directly into the rectangular tube instead of a through-bolt, and shifted the bolt position higher to guarantee clearance and enough room to actually torque it down.</p>
+              <p><strong>Tolerance stack-up:</strong> the vertical tube was constrained against rotating relative to the horizontal tube only by contacting faces — fine with perfect tolerances, but we don't get perfect tolerances. We added a second bolt to positively constrain that rotation instead of relying on a face fit.</p>
+              <p><strong>Fire extinguisher mount:</strong> the original plan was to strap the extinguisher on with a velcro strip epoxied to a mounting plate. Partway through the build we scrapped that for a purchased extinguisher bracket — more reliable and one less bonded joint to trust in a safety-critical mount.</p>
+            </div>
+            <div class="stage-gallery stage-gallery-1">
+              <figure class="g-item">
+                <img src="project-images/push-bar-mount-bracket-drawing.png" alt="Manufacturing drawing for the push bar's adjustable side mounting bracket, aluminum 6061-T6, with GD&amp;T callouts">
+                <figcaption>One of the manufacturing drawings I produced for the mount hardware — adjustable side bracket, Al 6061-T6</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Fabrication &amp; assembly</div>
+            <div class="stage-body">
+              <p>I built the bucket subassembly — the welded channel that the horizontal handle bar seats into — while teammates machined the gussets and bars. Everything was assigned and tracked (buckets, gussets, vertical bars, horizontal bars, fire extinguisher mount) with a shared drawing due-date, since four of us were machining different parts of the same assembly in parallel.</p>
+              <p>We welded only where the joint needed to be permanent — the handle bar to the horizontal bars, the extinguisher plate to the horizontal bars, and the bucket edges to the vertical bars — and bolted everything else so the bar stayed serviceable. The lower bucket holes were bolted only temporarily, to hold the bucket and vertical bars square to each other while we welded; those bolts came out once the welds were done.</p>
+            </div>
+            <div class="stage-gallery">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bucket-bracket-closeup.jpg" data-lightbox-alt="Close-up of the welded bucket and vertical-bar mounting bracket for the push bar" aria-label="Enlarge image">
+                <img src="project-images/push-bar-bucket-bracket-closeup.jpg" alt="Close-up of the welded bucket and vertical-bar mounting bracket for the push bar">
+              </button>
+              <figcaption>Welded bucket + vertical-bar mount, ready for the handle bar</figcaption>
+              </figure>
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bench-assembly.jpg" data-lightbox-alt="Push bar assembly on the workbench with the fire extinguisher clamped in place" aria-label="Enlarge image">
+                <img src="project-images/push-bar-bench-assembly.jpg" alt="Push bar assembly on the workbench with the fire extinguisher clamped in place">
+              </button>
+              <figcaption>Bench assembly, mid-build, with the extinguisher test-fit in place</figcaption>
+              </figure>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Final fit &amp; result</div>
+            <div class="stage-body">
+              <p>The finished bar bolted onto the roll hoop over the rear wing, and — per the whole point of the redesign — one person could actually get it on and off and use it to push the car by themselves.</p>
+            </div>
+            <div class="stage-video">
+              <video controls preload="metadata" poster="project-images/push-bar-mounted-in-use-poster.jpg">
+                <source src="project-images/push-bar-mounted-in-use.mp4" type="video/mp4">
+                Your browser doesn't support embedded video. <a href="project-images/push-bar-mounted-in-use.mp4">Download the clip</a> instead.
+              </video>
+              <figcaption>Finished push bar mounted over the rear wing, in use pushing car #250</figcaption>
+            </div>
+          </div>
+
+        </div>
+      </details>
+    </div>
+
+    <div class="proj">
+<div class="proj-title">Chassis Insert Test Assembly</div>
+      <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
+      <div class="proj-desc">Designed chassis insert test assemblies in Siemens NX, validated structural performance with ANSYS FEA up to 331 MPa, and produced 20+ manufacturing drawings with full GD&amp;T for the fixture.</div>
+
+      <div class="chassis-gallery">
         <figure class="g-item">
           <button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="CAD modeling of the chassis insert" aria-label="Enlarge image">
           <img src="project-images/Modeling of chassis insert.png" alt="CAD modeling of the chassis insert">
@@ -638,13 +934,66 @@
         <figcaption>Chassis insert modeling</figcaption>
         </figure>
         <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Finished push bar!.jpeg" data-lightbox-alt="Finished push bar mounted on the Formula SAE car, held by three team members" aria-label="Enlarge image">
-          <img src="project-images/Finished push bar!.jpeg" alt="Finished push bar mounted on the Formula SAE car, held by three team members">
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
+          <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
         </button>
-        <figcaption>Finished push bar</figcaption>
+        <figcaption>Manufactured chassis insert</figcaption>
         </figure>
       </div>
-      
+
+      <details class="proj-details">
+        <summary class="proj-toggle">
+          <span class="chevron">▸</span>
+          <span class="chevron-label-closed">See the full design-to-fabrication breakdown</span>
+          <span class="chevron-label-open">Hide full design-to-fabrication breakdown</span>
+        </summary>
+
+        <div class="stage-timeline">
+
+          <div class="stage">
+            <div class="stage-label">Problem &amp; requirements</div>
+            <div class="stage-body">
+              <p>Chassis inserts have to be trusted to carry real structural load on the car, so before any insert design goes on the chassis it needs to be physically validated against its design loads. My job was to design the test assembly that would let us actually apply those loads to insert specimens in a controlled, repeatable way, and generate a full manufacturing package so the fixture could be built to the tolerances the test required.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Modeling &amp; FEA</div>
+            <div class="stage-body">
+              <p>I modeled the test assembly in Siemens NX, then validated it with ANSYS FEA before committing to fabrication — checking that the fixture itself wouldn't yield or distort under the test loads and skew the results. That analysis showed peak stresses up to 331 MPa at the worst-case load locations, which we used to confirm margin against the material before signing off on the design.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Manufacturing drawings</div>
+            <div class="stage-body">
+              <p>From that validated model I produced more than 20 manufacturing drawings with full GD&amp;T callouts covering every fixture component, so the shop could machine each part to the tolerances the test setup actually needed — alignment and hole tolerances matter a lot more on a test fixture than on a one-off bracket, since the fixture itself has to introduce as little error as possible into the measurement.</p>
+            </div>
+          </div>
+
+          <div class="stage">
+            <div class="stage-label">Fabrication</div>
+            <div class="stage-body">
+              <p>The fixture components were machined from those drawings and assembled for testing.</p>
+            </div>
+            <div class="stage-gallery">
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Manufacturing setup for the chassis insert" aria-label="Enlarge image">
+                <img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Manufacturing setup for the chassis insert">
+              </button>
+              <figcaption>Manufacturing setup</figcaption>
+              </figure>
+              <figure class="g-item">
+                <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
+                <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
+              </button>
+              <figcaption>Manufactured insert, ready for testing</figcaption>
+              </figure>
+            </div>
+          </div>
+
+        </div>
+      </details>
     </div>
 
     <div class="proj">
