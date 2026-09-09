@@ -17,6 +17,7 @@
   }
 
   *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;scroll-padding-top:72px;}
 
   body{
     background:var(--bg);
@@ -249,6 +250,44 @@
     font-weight:500;
   }
   .proj-link:hover{text-decoration:underline;}
+  .project-highlights{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 16px;}
+  .project-highlight{font-size:11.5px;color:var(--accent);background:rgba(63,95,115,.08);border:1px solid rgba(63,95,115,.2);padding:5px 9px;border-radius:999px;}
+  .technical-details{margin-top:12px;border-left:2px solid var(--line);padding-left:13px;}
+  .technical-details summary{cursor:pointer;color:var(--accent);font-size:12.5px;font-weight:600;list-style:none;}
+  .technical-details summary::-webkit-details-marker{display:none;}
+  .technical-details summary::before{content:'+ ';}
+  .technical-details[open] summary::before{content:'− ';}
+  .technical-details .technical-body{font-size:13px;color:var(--ink-soft);margin-top:10px;}
+  .technical-details .technical-body ul{padding-left:18px;}
+  .technical-details .technical-body li{margin-bottom:6px;}
+  .portfolio-card{border:1px solid var(--line);border-radius:6px;background:var(--panel);overflow:hidden;margin-bottom:14px;}
+  .portfolio-card > summary{list-style:none;cursor:pointer;padding:20px 22px;display:grid;grid-template-columns:1fr auto;gap:5px 18px;align-items:center;}
+  .portfolio-card > summary::-webkit-details-marker{display:none;}
+  .portfolio-card > summary::after{content:'+';grid-column:2;grid-row:1 / span 3;font-size:25px;color:var(--accent);font-weight:400;}
+  .portfolio-card[open] > summary::after{content:'−';}
+  .portfolio-card[open] > summary{border-bottom:1px solid var(--line);}
+  .card-label{font-size:11px;color:var(--accent);font-weight:700;letter-spacing:.08em;text-transform:uppercase;}
+  .card-title{font-size:18px;font-weight:700;line-height:1.3;}
+  .card-summary{font-size:13px;color:var(--ink-soft);line-height:1.45;max-width:68ch;}
+  .portfolio-content{padding:24px;}
+  .featured-card{border-top:4px solid var(--accent);}
+  .portfolio-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+  .project-shell{margin:0;}
+  .project-shell[open]{grid-column:1 / -1;}
+  .project-shell > .proj{padding:22px;margin:0;}
+  .project-shell > .proj > .proj-title,.project-shell > .proj > .proj-org,.project-shell > .proj > .proj-desc{display:none;}
+  .company-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:0 0 24px;}
+  .company-metric{border-top:2px solid var(--accent);padding-top:10px;}
+  .company-metric strong{display:block;font-size:22px;line-height:1.1;}
+  .company-metric span{display:block;font-size:11.5px;color:var(--ink-soft);margin-top:4px;}
+  .work-role{padding:20px 0;border-top:1px solid var(--line);}
+  .work-role:first-of-type{border-top:0;padding-top:0;}
+  .work-role h3{font-size:16px;margin-bottom:2px;}
+  .work-role .role-meta{font-size:12px;color:var(--accent);margin-bottom:10px;}
+  .work-role ul{padding-left:18px;color:var(--ink-soft);font-size:14px;}
+  .work-role li{margin-bottom:7px;}
+  .portfolio-card .case-study{border:0;background:transparent;padding:0;}
+  @media(max-width:700px){.portfolio-grid,.company-metrics{grid-template-columns:1fr;}.portfolio-card > summary{padding:17px;}.portfolio-content{padding:18px;}}
 
   /* ============ INTERNSHIP CASE STUDIES ============ */
   .case-study{
@@ -764,8 +803,8 @@
     <ul class="nav-right">
       <li><a class="nav-section-link" href="#about">About</a></li>
       <li><a class="nav-section-link" href="#research">Research</a></li>
-      <li><a class="nav-section-link" href="#internships">Internships</a></li>
-      <li><button type="button" data-modal-open="work">Work</button></li>
+      <li><a class="nav-section-link" href="#internships">Work</a></li>
+      <li><a class="nav-section-link" href="#projects">Projects</a></li>
       <li><a class="resume-link" href="resume2.png" target="_blank" rel="noopener">Resume</a></li>
     </ul>
   </div>
@@ -778,8 +817,9 @@
     <h1>Hi, I'm Mio!</h1>
     <p class="hero-sub">I'm a mechanical engineering student at the University of Michigan studying how geometry can make aerospace structures lighter, deployable, and capable of absorbing energy—with hands-on experience spanning FEA, fabrication, and experimental validation. Graduating May 2028.</p>
     <div class="hero-actions">
-      <a class="btn-primary" href="resume2.png" target="_blank" rel="noopener">View Resume</a>
-      <a class="btn-secondary" href="#research">Explore My Research</a>
+      <a class="btn-primary" href="#research">Research</a>
+      <a class="btn-primary" href="#internships">Work Experience</a>
+      <a class="btn-primary" href="#projects">Projects</a>
     </div>
     <div class="hero-meta">
       <span>Ann Arbor, MI</span>
@@ -789,7 +829,12 @@
   </section>
 
   <section class="research-feature" id="research">
-    <div class="research-eyebrow">Featured Aerospace Research · Fabrication &amp; Testing Lead</div>
+    <h2>Research</h2>
+    <p class="section-sub">Select the study to explore the complete modeling, fabrication, and validation process.</p>
+    <details class="portfolio-card featured-card">
+      <summary><span class="card-label">Featured Aerospace Research</span><span class="card-title">Kresling Origami Structures</span><span class="card-summary">Compression-torsion coupling and tunable energy absorption through geometry, FEA, and physical testing.</span></summary>
+      <div class="portfolio-content">
+    <div class="research-eyebrow">Fabrication &amp; Testing Lead</div>
     <h2 class="research-question">Can an origami structure absorb energy in space?</h2>
     <p class="research-lede">Launch and space systems reward structures that use less mass and volume without giving up predictable mechanical performance. My research investigates Kresling origami tubes: thin-walled structures that convert axial compression into controlled rotation, creating a tunable collapse response for future energy-absorbing and deployable systems.</p>
 
@@ -838,11 +883,57 @@
     </div>
 
     <div class="research-cta"><a class="btn-primary" href="kresling-poster.pdf" target="_blank" rel="noopener">View Research Poster</a><span class="case-meta">University of Michigan Aerospace Engineering · Blue Ribbon, UROP Symposium</span></div>
+      </div>
+    </details>
   </section>
 
   <section id="internships">
-    <h2>Work Experience: Adient</h2>
-    <p class="section-sub">A confidentiality-safe case study of my GM production-seat ventilation redesign.</p>
+    <h2>Work Experience</h2>
+    <p class="section-sub">Select a role to view completed projects, measurable results, and technical details.</p>
+
+    <details class="portfolio-card">
+      <summary>
+        <span class="card-label">Energy Infrastructure</span>
+        <span class="card-title">Consumers Energy · Gas Engineering</span>
+        <span class="card-summary">Engineering standards, methane-emissions measurement, and external-corrosion work supporting Michigan gas infrastructure.</span>
+      </summary>
+      <div class="portfolio-content">
+        <div class="company-metrics" aria-label="Consumers Energy work totals">
+          <div class="company-metric"><strong>30+</strong><span>engineering standards authored or revised</span></div>
+          <div class="company-metric"><strong>20+</strong><span>legacy documents modernized</span></div>
+          <div class="company-metric"><strong>15+</strong><span>pipeline excavations analyzed</span></div>
+          <div class="company-metric"><strong>800+</strong><span>test stations organized</span></div>
+        </div>
+
+        <div class="work-role">
+          <h3>Gas Engineering Standards Services Co-op</h3>
+          <div class="role-meta">Livonia, Michigan · August 2026–Present</div>
+          <ul>
+            <li>Authored or revised more than 30 enterprise engineering standards covering electrical, instrumentation and controls; measurement, regulation and controls; methane-emissions measurement; and net-zero reporting.</li>
+            <li>Modernized more than 20 legacy technical documents into consistent internal templates, improving clarity and usability for engineering teams.</li>
+            <li>Supported standards for gas infrastructure, instrumentation, emissions reporting, and regulatory compliance.</li>
+          </ul>
+        </div>
+
+        <div class="work-role">
+          <h3>Gas Engineering Intern · External Corrosion</h3>
+          <div class="role-meta">Livonia, Michigan · May–August 2026</div>
+          <ul>
+            <li>Analyzed external corrosion on gas distribution and transmission pipelines through the Direct Assessment process across more than 15 excavations.</li>
+            <li>Managed facility attributes and historical records for three citygates and two valve sites.</li>
+            <li>Organized and renamed more than 800 Owl test stations to improve BSI database accuracy.</li>
+          </ul>
+        </div>
+      </div>
+    </details>
+
+    <details class="portfolio-card">
+      <summary>
+        <span class="card-label">Automotive Product Development</span>
+        <span class="card-title">Adient · Complete Seat Engineering</span>
+        <span class="card-summary">GM seat ventilation redesign: 17% better airflow, $358K projected annual savings, and an 8-second takt-time reduction.</span>
+      </summary>
+      <div class="portfolio-content">
 
     <article class="case-study">
       <div class="case-header">
@@ -904,51 +995,14 @@
           <path d="M314 319 V213" stroke="#3f5f73" stroke-width="4" marker-end="url(#air-arrow)"/>
           <text x="440" y="359" fill="#26282a" font-size="11" font-weight="700">BLOWER + MOTOR</text><line x1="420" y1="354" x2="434" y2="354" stroke="#5c5f62"/>
         </svg>
-        <figcaption>Simplified component architecture. Air is pulled through the perforated trim and molded channel network toward the blower; the suspension, carrier, gasket, and motor package affect how that path behaves under load.</figcaption>
+        <figcaption><strong>Ventilation architecture:</strong> the blower pulls air through the perforated trim and across the molded foam-channel network. The gasket seals that path to the blower, while the suspension mat, hooks, and carrier support the cushion from below.</figcaption>
       </figure>
 
       <div class="case-subhead">Root cause: local collapse at the H-point</div>
       <p class="case-copy">The first prototype performed well unoccupied but lost airflow under occupant loading. Physical inspection showed that a foam-channel opening near the H-point was being compressed against the suspension mat and gasket. Instead of pulling air across the entire channel set, the system encountered a local restriction directly above the blower. This narrowed the root cause from “insufficient blower performance” to a geometric and structural interaction under load.</p>
       <figure class="case-diagram">
-        <svg viewBox="0 0 720 360" role="img" aria-labelledby="hpoint-title hpoint-desc">
-          <title id="hpoint-title">H-point channel-collapse comparison</title>
-          <desc id="hpoint-desc">Two simplified seat cushion sections compare an open airflow channel with a channel pinched under occupant load at the H-point.</desc>
-          <defs><marker id="flow-tip" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#3f5f73"/></marker><marker id="load-tip" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b4f43"/></marker></defs>
-          <rect width="720" height="360" fill="#f4f4f2"/>
-          <line x1="360" y1="24" x2="360" y2="334" stroke="#cfcfcb"/>
-          <text x="28" y="35" fill="#26282a" font-size="15" font-weight="700">INTENDED FLOW</text>
-          <text x="388" y="35" fill="#26282a" font-size="15" font-weight="700">OCCUPIED: LOCAL COLLAPSE</text>
-
-          <g transform="translate(25 55)">
-            <path d="M28 43 Q62 20 115 21 H255 Q292 22 318 43 L305 91 H40 Z" fill="#d8d0b9" stroke="#26282a" stroke-width="2"/>
-            <rect x="42" y="94" width="262" height="28" rx="13" fill="#dbe8ed" stroke="#3f5f73" stroke-width="2"/>
-            <path d="M68 108 H278" stroke="#3f5f73" stroke-width="3" marker-end="url(#flow-tip)"/>
-            <rect x="48" y="128" width="250" height="8" rx="4" fill="#8b6758"/>
-            <path d="M52 151 H294" stroke="#69767b" stroke-width="7" stroke-dasharray="8 5"/>
-            <path d="M53 150 q-15 0 -15 18 v15 M293 150 q15 0 15 18 v15" fill="none" stroke="#69767b" stroke-width="5"/>
-            <path d="M27 185 H319 L304 216 H42 Z" fill="#596267" stroke="#26282a" stroke-width="2"/>
-            <circle cx="173" cy="245" r="27" fill="#3f5f73" stroke="#26282a" stroke-width="2"/><rect x="200" y="233" width="55" height="25" rx="7" fill="#8c969b" stroke="#26282a"/>
-            <path d="M173 218 V124" stroke="#3f5f73" stroke-width="3" marker-end="url(#flow-tip)"/>
-            <text x="109" y="293" fill="#5c5f62" font-size="11">OPEN CHANNEL ACROSS CUSHION</text>
-          </g>
-
-          <g transform="translate(385 55)">
-            <path d="M28 43 Q62 20 115 21 H255 Q292 22 318 43 L305 91 Q230 78 173 91 Q105 78 40 91 Z" fill="#d8d0b9" stroke="#26282a" stroke-width="2"/>
-            <path d="M42 94 H143 Q158 94 163 108 Q168 119 173 119 Q178 119 183 108 Q188 94 203 94 H304 V122 H202 Q184 122 173 113 Q162 122 144 122 H42 Z" fill="#dbe8ed" stroke="#3f5f73" stroke-width="2"/>
-            <path d="M73 108 H146" stroke="#3f5f73" stroke-width="3" marker-end="url(#flow-tip)"/><path d="M274 108 H201" stroke="#3f5f73" stroke-width="3" marker-end="url(#flow-tip)"/>
-            <rect x="48" y="128" width="250" height="8" rx="4" fill="#8b6758"/>
-            <path d="M52 151 H294" stroke="#69767b" stroke-width="7" stroke-dasharray="8 5"/>
-            <path d="M53 150 q-15 0 -15 18 v15 M293 150 q15 0 15 18 v15" fill="none" stroke="#69767b" stroke-width="5"/>
-            <path d="M27 185 H319 L304 216 H42 Z" fill="#596267" stroke="#26282a" stroke-width="2"/>
-            <circle cx="173" cy="245" r="27" fill="#3f5f73" stroke="#26282a" stroke-width="2"/><rect x="200" y="233" width="55" height="25" rx="7" fill="#8c969b" stroke="#26282a"/>
-            <path d="M173 218 V125" stroke="#3f5f73" stroke-width="3" marker-end="url(#flow-tip)"/>
-            <path d="M143 5 V66 M173 5 V76 M203 5 V66" stroke="#8b4f43" stroke-width="3" marker-end="url(#load-tip)"/>
-            <circle cx="173" cy="92" r="5" fill="#8b4f43"/><text x="183" y="87" fill="#8b4f43" font-size="10" font-weight="700">H-POINT</text>
-            <text x="100" y="293" fill="#8b4f43" font-size="11" font-weight="700">RESTRICTED AIRFLOW</text>
-          </g>
-          <g fill="#5c5f62" font-size="10"><text x="20" y="342">FOAM · CHANNEL · GASKET · SUSPENSION HOOKS · CARRIER · BLOWER + MOTOR</text></g>
-        </svg>
-        <figcaption>Root-cause model: the unoccupied channel remained open, while occupant loading near the H-point locally pinched the channel opening above the blower and restricted cross-channel airflow.</figcaption>
+        <img src="data:image/webp;base64,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" alt="Occupied cushion cross-section showing distributed occupant load, suspension reactions, foam and channel openings, gasket, carrier, suspension mat, and blower">
+        <figcaption><strong>Occupied-cushion root cause:</strong> the occupant applies a distributed load across the foam while the suspension system reacts from below. Near the H-point, this opposing load closes the channel opening above the blower, restricting airflow across the cushion.</figcaption>
       </figure>
 
       <div class="case-subhead">Material-science study: foam skin and sealer</div>
@@ -975,6 +1029,8 @@
 
       <p class="design-principle">“To design is either to formulate a plan for the satisfaction of a specified need or to solve a specific problem.” — <em>Shigley’s Mechanical Engineering Design</em>. I used that principle as the structure of the project: define, decide, prototype, test, and iterate until the solution worked as a product—not only as a CAD model.</p>
     </article>
+      </div>
+    </details>
   </section>
 
   <section id="projects">
@@ -1127,215 +1183,93 @@
     </div>
 
     <div class="proj">
-<div class="proj-title">Over-Wing Push Bar</div>
+      <div class="proj-title">Over-Wing Push Bar</div>
       <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
-      <div class="proj-desc">Collaborated on a 4-person team to design and manually machine a push bar mounted over the rear wing of a 420-lb Formula SAE car, replacing a previous design that was awkward to install and use. I owned the bucket/mount subassembly, the hand-calculated free-body analysis behind the mounting loads, several of the manufacturing drawings, and helped hand-machine the final parts.</div>
 
       <div class="chassis-gallery">
         <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/First Drawings of Push Bar.jpg" data-lightbox-alt="First drawings of the Formula SAE push bar" aria-label="Enlarge image">
-          <img src="project-images/First Drawings of Push Bar.jpg" alt="First drawings of the Formula SAE push bar">
-        </button>
-        <figcaption>First push-bar drawings</figcaption>
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/First Drawings of Push Bar.jpg" data-lightbox-alt="First drawings of the Formula SAE push bar" aria-label="Enlarge image"><img src="project-images/First Drawings of Push Bar.jpg" alt="First drawings of the Formula SAE push bar"></button>
+          <figcaption>Initial layout drawings</figcaption>
         </figure>
         <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Finished push bar!.jpeg" data-lightbox-alt="Finished push bar mounted on the Formula SAE car, held by three team members" aria-label="Enlarge image">
-          <img src="project-images/Finished push bar!.jpeg" alt="Finished push bar mounted on the Formula SAE car, held by three team members">
-        </button>
-        <figcaption>Finished push bar</figcaption>
+          <button class="image-trigger" type="button" data-lightbox-src="project-images/Finished push bar!.jpeg" data-lightbox-alt="Third push-bar prototype mounted on the Formula SAE car" aria-label="Enlarge image"><img src="project-images/Finished push bar!.jpeg" alt="Third push-bar prototype mounted on the Formula SAE car"></button>
+          <figcaption>Third prototype mounted over the rear wing</figcaption>
         </figure>
       </div>
 
+      <div class="proj-desc">Designed and machined the third push-bar prototype for a 420-lb Formula SAE car. The over-wing design replaced an awkward earlier solution and enabled one-person installation and use.</div>
+      <div class="project-highlights"><span class="project-highlight">4-person team</span><span class="project-highlight">2.41-lb mount assembly</span><span class="project-highlight">6061 aluminum</span><span class="project-highlight">One-person installation</span></div>
+
       <details class="proj-details">
-        <summary class="proj-toggle">
-          <span class="chevron">▸</span>
-          <span class="chevron-label-closed">See the full design-to-final-fit breakdown</span>
-          <span class="chevron-label-open">Hide full design-to-final-fit breakdown</span>
-        </summary>
-
+        <summary class="proj-toggle"><span class="chevron">▸</span><span class="chevron-label-closed">See the design process</span><span class="chevron-label-open">Hide design process</span></summary>
         <div class="stage-timeline">
-
           <div class="stage">
-            <div class="stage-label">Problem &amp; requirements</div>
-            <div class="stage-body">
-              <p>Our car needed a way for one person to push it from behind without leaning on the rear aero package — the previous push bar design was awkward to install and get onto the roll hoop, especially working from behind the car. We set out to replace it with a bar that mounted over the rear wing, bolted onto the roll hoop, and was simple enough for one person to install and use. I worked on a 4-person team, owning the bucket/mounting subassembly, the hand free-body analysis, part of the manufacturing drawing set, and hand-machining.</p>
-            </div>
+            <div class="stage-label">Problem &amp; concept</div>
+            <div class="stage-body"><p>The previous bar was difficult to install behind the rear wing. Prototype 3 moved the structure over the wing and bolted it directly to the roll hoop.</p></div>
           </div>
 
           <div class="stage">
-            <div class="stage-label">Free-body diagram &amp; hand calcs</div>
-            <div class="stage-body">
-              <p>I modeled the push bar as a beam: the horizontal handle picks up the pushing load, and that load has to react through the two vertical legs into the roll-hoop mounting points. I sketched it out as a simply-supported/overhung beam and solved for the reaction forces at each mount (F<sub>R1</sub>, F<sub>R2</sub>) so I knew what the mounting brackets and their bolts actually had to carry — instead of just guessing at fastener sizes.</p>
-              <p>I also had to answer a more basic question: could one person actually hold the vertical-bar assembly up against the roll hoop while installing it, or would it need a second set of hands? I modeled the assembly in NX, assigned it 6061 aluminum, and pulled its mass — 2.41 lb. To sanity-check what a person can comfortably hold out at arm's length, I'd tried a similar hand-calculation the day before for a class problem (holding a weight on the end of a broomstick) and actually tested it by hand, which put the practical one-person limit around 4 lb. At 2.41 lb, the vertical-bar assembly cleared that with margin, so we knew installation wouldn't need a second person just to hold it steady.</p>
-            </div>
-            <div class="stage-gallery stage-gallery-1">
-              <figure class="g-item">
-                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-fbd-whiteboard.jpg" data-lightbox-alt="Whiteboard free-body diagram of the push bar showing reaction forces at the two roll-hoop mounts" aria-label="Enlarge image">
-                <img src="project-images/push-bar-fbd-whiteboard.jpg" alt="Whiteboard free-body diagram of the push bar showing reaction forces at the two roll-hoop mounts">
-              </button>
-              <figcaption>Hand free-body diagram: handle load reacted through the two roll-hoop mounting points (F<sub>R1</sub>, F<sub>R2</sub>)</figcaption>
-              </figure>
-            </div>
+            <div class="stage-label">Analysis &amp; design review</div>
+            <div class="stage-body"><p>I calculated mount reactions, checked one-person handling mass, and resolved bolt-clearance and tolerance-stack issues before machining.</p></div>
+            <div class="stage-gallery stage-gallery-1"><figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-fbd-whiteboard.jpg" data-lightbox-alt="Whiteboard free-body diagram of the push bar" aria-label="Enlarge image"><img src="project-images/push-bar-fbd-whiteboard.jpg" alt="Whiteboard free-body diagram of the push bar"></button><figcaption>Free-body diagram used to calculate reactions at both roll-hoop mounts</figcaption></figure></div>
+            <details class="technical-details"><summary>Technical details</summary><div class="technical-body"><ul><li>Modeled the handle as an overhung beam and solved for F<sub>R1</sub> and F<sub>R2</sub> at the mounts.</li><li>Verified the 2.41-lb vertical assembly stayed below the approximate 4-lb one-person handling target.</li><li>Replaced an interfering through-bolt with a fine-thread tapped fastener and added a second bolt to constrain rotation.</li><li>Replaced the bonded extinguisher strap concept with a purchased mechanical bracket.</li></ul></div></details>
           </div>
 
           <div class="stage">
-            <div class="stage-label">Design review — what almost went wrong</div>
-            <div class="stage-body">
-              <p>Before anything got machined, our CAD review turned up a few things that would have been real problems on the car:</p>
-              <p><strong>Bolt clearance:</strong> one of the through-bolts on the vertical-bar mount would have interfered with the roll hoop itself. We fixed it by moving to a fine-thread bolt tapped directly into the rectangular tube instead of a through-bolt, and shifted the bolt position higher to guarantee clearance and enough room to actually torque it down.</p>
-              <p><strong>Tolerance stack-up:</strong> the vertical tube was constrained against rotating relative to the horizontal tube only by contacting faces — fine with perfect tolerances, but we don't get perfect tolerances. We added a second bolt to positively constrain that rotation instead of relying on a face fit.</p>
-              <p><strong>Fire extinguisher mount:</strong> the original plan was to strap the extinguisher on with a velcro strip epoxied to a mounting plate. Partway through the build we scrapped that for a purchased extinguisher bracket — more reliable and one less bonded joint to trust in a safety-critical mount.</p>
-            </div>
-            <div class="stage-gallery stage-gallery-1">
-              <figure class="g-item">
-                <img src="project-images/push-bar-mount-bracket-drawing.png" alt="Manufacturing drawing for the push bar's adjustable side mounting bracket, aluminum 6061-T6, with GD&amp;T callouts">
-                <figcaption>One of the manufacturing drawings I produced for the mount hardware — adjustable side bracket, Al 6061-T6</figcaption>
-              </figure>
-            </div>
-          </div>
-
-          <div class="stage">
-            <div class="stage-label">Fabrication &amp; assembly</div>
-            <div class="stage-body">
-              <p>I built the bucket subassembly — the welded channel that the horizontal handle bar seats into — while teammates machined the gussets and bars. Everything was assigned and tracked (buckets, gussets, vertical bars, horizontal bars, fire extinguisher mount) with a shared drawing due-date, since four of us were machining different parts of the same assembly in parallel.</p>
-              <p>We welded only where the joint needed to be permanent — the handle bar to the horizontal bars, the extinguisher plate to the horizontal bars, and the bucket edges to the vertical bars — and bolted everything else so the bar stayed serviceable. The lower bucket holes were bolted only temporarily, to hold the bucket and vertical bars square to each other while we welded; those bolts came out once the welds were done.</p>
-            </div>
+            <div class="stage-label">Fabrication</div>
+            <div class="stage-body"><p>I owned the bucket/mount subassembly, produced manufacturing drawings, and helped machine and assemble the final hardware.</p></div>
             <div class="stage-gallery">
-              <figure class="g-item">
-                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bucket-bracket-closeup.jpg" data-lightbox-alt="Close-up of the welded bucket and vertical-bar mounting bracket for the push bar" aria-label="Enlarge image">
-                <img src="project-images/push-bar-bucket-bracket-closeup.jpg" alt="Close-up of the welded bucket and vertical-bar mounting bracket for the push bar">
-              </button>
-              <figcaption>Welded bucket + vertical-bar mount, ready for the handle bar</figcaption>
-              </figure>
-              <figure class="g-item">
-                <button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bench-assembly.jpg" data-lightbox-alt="Push bar assembly on the workbench with the fire extinguisher clamped in place" aria-label="Enlarge image">
-                <img src="project-images/push-bar-bench-assembly.jpg" alt="Push bar assembly on the workbench with the fire extinguisher clamped in place">
-              </button>
-              <figcaption>Bench assembly, mid-build, with the extinguisher test-fit in place</figcaption>
-              </figure>
+              <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bucket-bracket-closeup.jpg" data-lightbox-alt="Welded push-bar bucket and mounting bracket" aria-label="Enlarge image"><img src="project-images/push-bar-bucket-bracket-closeup.jpg" alt="Welded push-bar bucket and mounting bracket"></button><figcaption>Welded bucket and vertical-bar mount</figcaption></figure>
+              <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/push-bar-bench-assembly.jpg" data-lightbox-alt="Third push-bar prototype during bench assembly" aria-label="Enlarge image"><img src="project-images/push-bar-bench-assembly.jpg" alt="Third push-bar prototype during bench assembly"></button><figcaption>Prototype 3 during bench assembly</figcaption></figure>
             </div>
+            <details class="technical-details"><summary>Assembly strategy</summary><div class="technical-body">Permanent joints were welded; serviceable interfaces remained bolted. Temporary lower-bucket bolts held the assembly square during welding and were removed afterward.</div></details>
           </div>
 
           <div class="stage">
-            <div class="stage-label">Final fit &amp; result</div>
-            <div class="stage-body">
-              <p>The finished bar bolted onto the roll hoop over the rear wing, and — per the whole point of the redesign — one person could actually get it on and off and use it to push the car by themselves.</p>
-            </div>
-            <div class="stage-video">
-              <video controls preload="metadata" poster="project-images/push-bar-mounted-in-use-poster.jpg">
-                <source src="project-images/push-bar-mounted-in-use.mp4" type="video/mp4">
-                Your browser doesn't support embedded video. <a href="project-images/push-bar-mounted-in-use.mp4">Download the clip</a> instead.
-              </video>
-              <figcaption>Finished push bar mounted over the rear wing, in use pushing car #250</figcaption>
-            </div>
+            <div class="stage-label">Prototype 3 result</div>
+            <div class="stage-body"><p>The finished design mounted above the rear wing and could be installed, removed, and used by one person.</p></div>
+            <div class="stage-video"><video controls preload="metadata" poster="project-images/push-bar-mounted-in-use-poster.jpg"><source src="project-images/push-bar-mounted-in-use.mp4" type="video/mp4">Your browser doesn't support embedded video. <a href="project-images/push-bar-mounted-in-use.mp4">Download the clip</a> instead.</video><figcaption>Third push-bar prototype mounted over the rear wing and used to push MRacing car #250</figcaption></div>
           </div>
-
         </div>
       </details>
     </div>
 
     <div class="proj">
-<div class="proj-title">Chassis Insert Test Assembly</div>
+      <div class="proj-title">Chassis Insert Test Assembly</div>
       <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
-      <div class="proj-desc">Designed chassis insert test assemblies in Siemens NX, validated structural performance with ANSYS FEA up to 331 MPa, and produced 20+ manufacturing drawings with full GD&amp;T for the fixture.</div>
 
       <div class="chassis-gallery">
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="CAD modeling of the chassis insert" aria-label="Enlarge image">
-          <img src="project-images/Modeling of chassis insert.png" alt="CAD modeling of the chassis insert">
-        </button>
-        <figcaption>Chassis insert modeling</figcaption>
-        </figure>
-        <figure class="g-item">
-          <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
-          <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
-        </button>
-        <figcaption>Manufactured chassis insert</figcaption>
-        </figure>
+        <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="Siemens NX model of the chassis insert test assembly" aria-label="Enlarge image"><img src="project-images/Modeling of chassis insert.png" alt="Siemens NX model of the chassis insert test assembly"></button><figcaption>Test-assembly CAD in Siemens NX</figcaption></figure>
+        <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert specimen" aria-label="Enlarge image"><img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert specimen"></button><figcaption>Manufactured insert specimen</figcaption></figure>
       </div>
 
+      <div class="proj-desc">Designed a fixture to qualify bonded aluminum inserts for carbon-fiber two-force members, then carried the work from CAD and FEA through drawings, machining, and destructive testing.</div>
+      <div class="project-highlights"><span class="project-highlight">20+ manufacturing drawings</span><span class="project-highlight">Full GD&amp;T</span><span class="project-highlight">331 MPa peak FEA stress</span><span class="project-highlight">Tension + compression</span></div>
+
       <details class="proj-details">
-        <summary class="proj-toggle">
-          <span class="chevron">▸</span>
-          <span class="chevron-label-closed">See the full design-to-fabrication breakdown</span>
-          <span class="chevron-label-open">Hide full design-to-fabrication breakdown</span>
-        </summary>
-
+        <summary class="proj-toggle"><span class="chevron">▸</span><span class="chevron-label-closed">See the design-to-test process</span><span class="chevron-label-open">Hide design-to-test process</span></summary>
         <div class="stage-timeline">
-
           <div class="stage">
-            <div class="stage-label">Goal</div>
-            <div class="stage-body">
-              <p>Design, test, and qualify carbon-fiber two-force members for MR25 — bonded-in aluminum inserts, similar in concept to the ones already used on our steering column, so the load path from a solid metal fitting into a hollow carbon tube would be well understood before we trusted it anywhere else on the car.</p>
-            </div>
+            <div class="stage-label">Define the test</div>
+            <div class="stage-body"><p>The fixture had to isolate the strength and failure mode of a bonded aluminum insert inside a carbon tube without the fixture distorting first.</p></div>
+            <details class="technical-details"><summary>Test variables</summary><div class="technical-body"><ul><li>Bond length, area, and adhesive thickness</li><li>Epoxy selection and process variation</li><li>Tension versus compression behavior</li><li>Fatigue, carbon aging, rod-end fit, and DFMEA/PFMEA risks</li></ul></div></details>
           </div>
 
           <div class="stage">
-            <div class="stage-label">Design considerations &amp; variables</div>
-            <div class="stage-body">
-              <p>Before sizing a single insert, I mapped out everything that could actually affect a bonded joint's real-world strength, so the test matrix wouldn't just be guesswork:</p>
-              <ul>
-                <li>Bond area / bond length</li>
-                <li>Bond thickness — i.e. the depth of the groove cut into the insert</li>
-                <li>Epoxy type</li>
-                <li>Strength in tension vs. compression (bonded joints don't necessarily behave the same in both)</li>
-                <li>Fatigue life and long-term carbon aging</li>
-                <li>Rod-end fit and interface</li>
-                <li>DFMEA / PFMEA — design- and process-level failure modes to catch before they became real failures</li>
-                <li>Whether testing needed to be destructive to actually find the failure load</li>
-              </ul>
-            </div>
+            <div class="stage-label">Model &amp; validate</div>
+            <div class="stage-body"><p>I modeled the assembly in Siemens NX and checked the fixture in ANSYS before releasing it for fabrication.</p></div>
+            <details class="technical-details"><summary>Technical details</summary><div class="technical-body"><ul><li>Used a 1-inch baseline bond length after benchmarking diminishing strength returns with RIT Formula SAE.</li><li>Selected aluminum inserts to remain consistent with a steering-column joint already used by the team.</li><li>Evaluated worst-case fixture regions up to 331 MPa so fixture deformation would not corrupt the test.</li></ul></div></details>
           </div>
 
           <div class="stage">
-            <div class="stage-label">Benchmarking &amp; key decisions</div>
-            <div class="stage-body">
-              <p>Rather than guess at a bond length, I checked in with RIT's FSAE team, who'd found that bond strength shows diminishing returns past about 1 inch — so we adopted a 1" bond length as our baseline instead of over-building the joint for no real strength gain. We also settled on aluminum inserts, consistent with the approach already proven on our steering column, rather than introducing a new insert material to validate from scratch.</p>
-            </div>
-          </div>
-
-          <div class="stage">
-            <div class="stage-label">Modeling &amp; FEA</div>
-            <div class="stage-body">
-              <p>I modeled the test assembly in Siemens NX, then validated it with ANSYS FEA before committing to fabrication — checking that the fixture itself wouldn't yield or distort under the test loads and skew the results. That analysis showed peak stresses up to 331 MPa at the worst-case load locations, which we used to confirm margin against the material before signing off on the design.</p>
-            </div>
-          </div>
-
-          <div class="stage">
-            <div class="stage-label">Manufacturing drawings</div>
-            <div class="stage-body">
-              <p>From that validated model I produced more than 20 manufacturing drawings with full GD&amp;T callouts covering every fixture component, so the shop could machine each part to the tolerances the test setup actually needed — alignment and hole tolerances matter a lot more on a test fixture than on a one-off bracket, since the fixture itself has to introduce as little error as possible into the measurement.</p>
-            </div>
-          </div>
-
-          <div class="stage">
-            <div class="stage-label">Fabrication</div>
-            <div class="stage-body">
-              <p>The fixture components and insert specimens — made at different bonding lengths so we could isolate bond length as a variable — were machined from those drawings and assembled for testing.</p>
-            </div>
+            <div class="stage-label">Draw, machine &amp; test</div>
+            <div class="stage-body"><p>I produced 20+ GD&amp;T drawings, machined the fixture components, and prepared specimens for load-frame testing.</p></div>
             <div class="stage-gallery">
-              <figure class="g-item">
-                <button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Manufacturing setup for the chassis insert" aria-label="Enlarge image">
-                <img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Manufacturing setup for the chassis insert">
-              </button>
-              <figcaption>Manufacturing setup</figcaption>
-              </figure>
-              <figure class="g-item">
-                <button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert" aria-label="Enlarge image">
-                <img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert">
-              </button>
-              <figcaption>Manufactured insert, ready for testing</figcaption>
-              </figure>
+              <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Manufacturing for Chassis Insert.jpg" data-lightbox-alt="Machining setup for the chassis insert fixture" aria-label="Enlarge image"><img src="project-images/Manufacturing for Chassis Insert.jpg" alt="Machining setup for the chassis insert fixture"></button><figcaption>Fixture manufacturing setup</figcaption></figure>
+              <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured insert ready for testing" aria-label="Enlarge image"><img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured insert ready for testing"></button><figcaption>Insert specimen ready for testing</figcaption></figure>
             </div>
+            <details class="technical-details"><summary>Testing details</summary><div class="technical-body">Specimens are loaded to failure in both tension and compression so the test reveals the true failure load and mode—not only whether the joint survives a nominal design case.</div></details>
           </div>
-
-          <div class="stage">
-            <div class="stage-label">Testing</div>
-            <div class="stage-body">
-              <p>Specimens are pull/compression-tested on an Instron-type load frame, run to failure so the destructive test actually reveals the true failure load and mode rather than just an assumed value — tested in both tension and compression, since carbon-to-metal bonded joints can fail differently depending on load direction.</p>
-            </div>
-          </div>
-
         </div>
       </details>
     </div>
@@ -1492,6 +1426,37 @@
 </div>
 
 <script>
+
+  const projectsSection = document.getElementById('projects');
+  if(projectsSection){
+    const projectItems = Array.from(projectsSection.children).filter(item => item.classList.contains('proj'));
+    if(projectItems.length){
+      const projectGrid = document.createElement('div');
+      projectGrid.className = 'portfolio-grid';
+      projectsSection.insertBefore(projectGrid, projectItems[0]);
+
+      projectItems.forEach(project => {
+        const title = project.querySelector(':scope > .proj-title')?.textContent.trim() || 'Project';
+        const organization = project.querySelector(':scope > .proj-org')?.textContent.trim() || 'Engineering Project';
+        const description = project.querySelector(':scope > .proj-desc')?.textContent.trim() || '';
+        const shell = document.createElement('details');
+        shell.className = 'portfolio-card project-shell';
+        const summary = document.createElement('summary');
+        const label = document.createElement('span');
+        const heading = document.createElement('span');
+        const overview = document.createElement('span');
+        label.className = 'card-label';
+        heading.className = 'card-title';
+        overview.className = 'card-summary';
+        label.textContent = organization;
+        heading.textContent = title;
+        overview.textContent = description;
+        summary.append(label, heading, overview);
+        shell.append(summary, project);
+        projectGrid.appendChild(shell);
+      });
+    }
+  }
 
   const lightbox = document.getElementById('image-lightbox');
   const lightboxImg = document.getElementById('image-lightbox-img');
