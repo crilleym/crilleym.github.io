@@ -96,6 +96,8 @@
   .hero{
     padding:64px 0 48px;
   }
+  .hero > .about-photo-row{margin:0 auto 28px;max-width:760px;width:100%;}
+  .hero > .about-photo-row .about-photo img{height:230px;}
   .hero p.kicker{
     font-size:14px;
     color:var(--accent);
@@ -875,7 +877,7 @@
     <p class="section-sub">Kresling origami structures for compression-torsion coupling and tunable energy absorption.</p>
     <div class="research-eyebrow">Fabrication &amp; Testing Lead</div>
     <h2 class="research-question">Can an origami structure absorb energy in space?</h2>
-    <p class="research-lede">Launch and space systems reward structures that use less mass and volume without giving up predictable mechanical performance. My research investigates Kresling origami tubes: thin-walled structures that convert axial compression into controlled rotation, creating a tunable collapse response for future energy-absorbing and deployable systems.</p>
+    <p class="research-lede">Launch and space systems reward structures that use less mass and volume without giving up predictable mechanical performance. My research investigates Kresling origami tubes: thin-walled structures that convert axial compression into controlled rotation, creating a tunable collapse response for future energy-absorbing and deployable systems. I fabricated PA12 specimens through Multi Jet Fusion (MJF) and PLA specimens on Bambu Lab fused-deposition-modeling (FDM) printers. The PA12 parts were tougher and more ductile, producing more repeatable folding and progressive collapse without premature fracture. PLA enabled faster, lower-cost design iterations, but its greater stiffness and brittleness—combined with FDM layer-direction effects—made failure more localized and sensitive to print orientation. Comparing the two showed how both material behavior and manufacturing process influence peak load, rotation, failure mode, and usable energy absorption.</p>
 
     <div class="research-pillars">
       <div class="research-pillar"><div class="pillar-title">Mass</div><div class="pillar-copy">Tune performance through geometry and wall thickness instead of simply adding material.</div></div>
@@ -1305,7 +1307,7 @@
       <div class="proj-org">MRacing Formula SAE — Suspension &amp; Chassis Team</div>
 
       <div class="chassis-gallery">
-        <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="Siemens NX model of the chassis insert test assembly" aria-label="Enlarge image"><img src="project-images/Modeling of chassis insert.png" alt="Siemens NX model of the chassis insert test assembly"></button><figcaption>Test-assembly CAD in Siemens NX</figcaption></figure>
+        <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Modeling of chassis insert.png" data-lightbox-alt="ANSYS stress analysis of the chassis insert showing 331 MPa peak stress" aria-label="Enlarge image"><img src="project-images/Modeling of chassis insert.png" alt="ANSYS stress analysis of the chassis insert showing 331 MPa peak stress"></button><figcaption>ANSYS stress analysis of the chassis insert, showing a peak stress of 331 MPa</figcaption></figure>
         <figure class="g-item"><button class="image-trigger" type="button" data-lightbox-src="project-images/Manuf. Chassis Insert.jpg" data-lightbox-alt="Manufactured chassis insert specimen" aria-label="Enlarge image"><img src="project-images/Manuf. Chassis Insert.jpg" alt="Manufactured chassis insert specimen"></button><figcaption>Manufactured insert specimen</figcaption></figure>
       </div>
 
@@ -1642,6 +1644,13 @@
 </div>
 
 <script>
+  const hero = document.querySelector('.hero');
+  const topPersonalPhotos = document.querySelector('#about .about-photo-row:not(.bottom)');
+  if (hero && topPersonalPhotos) {
+    topPersonalPhotos.setAttribute('aria-label', 'Personal photos featuring Mio Crilley');
+    hero.prepend(topPersonalPhotos);
+  }
+
 
   document.querySelectorAll('details.portfolio-card').forEach(card => {
     const summary = card.querySelector(':scope > summary');
