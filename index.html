@@ -300,27 +300,6 @@
   .research-more[open] > summary::after{content:'−';}
   .research-more-content{padding-top:24px;}
 
-  /* ============ INTERVIEW NOTES ============ */
-  .notes-tab[aria-expanded="true"]{color:var(--accent);font-weight:700;}
-  .notes-section{padding:54px 0;}
-  .notes-header{display:flex;justify-content:space-between;gap:24px;align-items:flex-start;margin-bottom:24px;}
-  .notes-header p{max-width:66ch;color:var(--ink-soft);font-size:14px;}
-  .notes-close{border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:4px;padding:8px 12px;font:inherit;font-size:13px;cursor:pointer;}
-  .notes-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
-  .note-card{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:0 16px;}
-  .note-card[open]{grid-column:1 / -1;padding-bottom:16px;}
-  .note-card summary{cursor:pointer;font-weight:700;font-size:14px;padding:15px 24px 15px 0;position:relative;list-style:none;}
-  .note-card summary::-webkit-details-marker{display:none;}
-  .note-card summary::after{content:'+';position:absolute;right:0;color:var(--accent);font-size:18px;}
-  .note-card[open] summary::after{content:'−';}
-  .note-body{font-size:13.5px;color:var(--ink-soft);}
-  .note-body h4{font-size:13px;color:var(--ink);margin:14px 0 5px;}
-  .note-body h4:first-child{margin-top:0;}
-  .note-body ul{padding-left:19px;}
-  .note-body li{margin-bottom:6px;}
-  .note-equation{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;color:var(--ink);background:rgba(63,95,115,.07);padding:8px 10px;border-left:3px solid var(--accent);margin:8px 0;overflow-wrap:anywhere;}
-  .note-callout{border-left:3px solid var(--accent);padding-left:12px;margin-top:12px;color:var(--ink);}
-  @media(max-width:700px){.notes-grid{grid-template-columns:1fr;}.notes-header{display:block;}.notes-close{margin-top:14px;}}
   .about-photo-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;max-width:680px;margin:16px auto 22px;}
   .about-photo-row.bottom{margin-top:22px;margin-bottom:0;}
   .about-photo{margin:0;border:1px solid var(--line);border-radius:5px;overflow:hidden;background:var(--panel);}
@@ -847,7 +826,6 @@
       <li><a class="nav-section-link" href="#research">Research</a></li>
       <li><a class="nav-section-link" href="#internships">Work</a></li>
       <li><a class="nav-section-link" href="#projects">Projects</a></li>
-      <li><button class="notes-tab" type="button" data-notes-toggle aria-controls="notes" aria-expanded="false">Notes</button></li>
       <li><a class="resume-link" href="resume2.png" target="_blank" rel="noopener">Resume</a></li>
     </ul>
   </div>
@@ -1382,147 +1360,6 @@
     </div>
   </section>
 
-  <section class="notes-section" id="notes" hidden aria-labelledby="notes-title">
-    <div class="notes-header">
-      <div>
-        <div class="research-eyebrow">NASA JPL Interview Reference</div>
-        <h2 id="notes-title">Mechanical Engineering Notes</h2>
-        <p>A compact review of the fundamentals behind my structures, testing, thermal-fluid, manufacturing, and design experience. Open a topic to review equations, assumptions, failure modes, and the questions I should be ready to answer.</p>
-      </div>
-      <button class="notes-close" type="button" data-notes-close>Close notes</button>
-    </div>
-
-    <div class="notes-grid">
-      <details class="note-card">
-        <summary>01 · Engineering problem solving</summary>
-        <div class="note-body">
-          <h4>Reliable answer structure</h4>
-          <ul><li>Define the objective, constraints, interfaces, loads, environment, and measurable success criteria.</li><li>Draw the system boundary and free-body diagram before choosing equations or software.</li><li>State assumptions, identify the dominant physics, estimate by hand, then use CAD/FEA/testing for refinement.</li><li>Check units, limiting cases, order of magnitude, sensitivity, and whether the result is physically possible.</li><li>Close the loop: compare prediction with test, explain discrepancies, update the model, and document the decision.</li></ul>
-          <div class="note-callout"><strong>JPL mindset:</strong> show that I can reduce ambiguity, quantify uncertainty, protect against single-point failure, and communicate when evidence changes my conclusion.</div>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>02 · Statics &amp; load paths</summary>
-        <div class="note-body">
-          <h4>Core equilibrium</h4>
-          <div class="note-equation">ΣF = 0 &nbsp;&nbsp; ΣM = 0 &nbsp;&nbsp; M = r × F</div>
-          <ul><li>Isolate the body; replace supports with reactions; include weight, applied loads, distributed loads, and couples.</li><li>Pin: two planar reactions. Roller: one normal reaction. Fixed support: forces plus reaction moment.</li><li>Replace a distributed load w(x) with its area acting through the load diagram’s centroid.</li><li>Trace the complete load path from application point through joints and members to ground. Watch eccentricity, prying, and local bearing.</li></ul>
-          <h4>Trusses and frames</h4>
-          <ul><li>Two-force members carry axial tension/compression. Use method of joints for member forces and method of sections for targeted members.</li><li>In brackets and bolted joints, separate direct shear from moment-induced loads. The farthest fastener often sees the highest secondary load.</li><li>Static determinacy is not the same as stability; check constraints and possible rigid-body motion.</li></ul>
-          <div class="note-callout"><strong>Résumé link:</strong> explain the MRacing push-bar load path for three people pushing a ~420 lb car, then identify bending, joint, fastener, and human-interface checks.</div>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>03 · Mechanics of materials</summary>
-        <div class="note-body">
-          <h4>Stress, strain, and deformation</h4>
-          <div class="note-equation">σ = P/A &nbsp; τ = V/A &nbsp; ε = ΔL/L₀ &nbsp; σ = Eε &nbsp; γ = τ/G &nbsp; ν = −εtrans/εaxial</div>
-          <ul><li>Normal stress acts perpendicular to an area; shear stress acts tangent. Stress concentration makes local peak stress exceed nominal stress.</li><li>Axial deformation: δ = PL/(AE). Thermal strain: ε<sub>th</sub> = αΔT; restraint converts thermal expansion into stress.</li></ul>
-          <h4>Beams, torsion, and combined loading</h4>
-          <div class="note-equation">σbend = My/I &nbsp; τtorsion = Tr/J &nbsp; θ = TL/(JG) &nbsp; EI v″ = M(x)</div>
-          <ul><li>Maximum bending stress occurs farthest from the neutral axis. Increasing section depth strongly increases I.</li><li>Beam shear: τ = VQ/(It); transverse shear is usually largest near the neutral axis.</li><li>Use principal stress or von Mises stress for multiaxial ductile failure; compare with yield using an appropriate factor of safety.</li></ul>
-          <h4>Buckling and energy</h4>
-          <div class="note-equation">Pcr = π²EI/(KL)² &nbsp;&nbsp; U = ∫F dδ &nbsp;&nbsp; SEA = absorbed energy / mass</div>
-          <ul><li>Euler buckling applies to slender, ideal columns; real behavior depends on end conditions, imperfections, material nonlinearity, and local buckling.</li><li>For Kresling tubes, distinguish peak load, initial stiffness, collapse stroke, rotation, absorbed energy, and specific energy absorption.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>04 · Behavior of materials</summary>
-        <div class="note-body">
-          <h4>Structure–property relationships</h4>
-          <ul><li>Elastic deformation is recoverable; plastic deformation begins at yield. Strength is not stiffness, and toughness is not hardness.</li><li>Toughness is total energy to fracture; resilience is elastic energy capacity. Ductility is commonly percent elongation or reduction in area.</li><li>Metals deform through dislocation motion. Grain refinement generally raises strength; cold work raises strength and lowers ductility; annealing can restore ductility.</li></ul>
-          <h4>Failure modes</h4>
-          <ul><li><strong>Fatigue:</strong> cyclic crack initiation and growth, often below yield; affected by mean stress, surface finish, notches, environment, and residual stress.</li><li><strong>Fracture:</strong> brittle versus ductile behavior; stress intensity K compared with fracture toughness K<sub>IC</sub>.</li><li><strong>Creep:</strong> time-dependent deformation at elevated homologous temperature; consider primary, secondary, and tertiary regimes.</li><li><strong>Corrosion:</strong> material, environment, electrical continuity, and coating condition control attack; geometry can create crevices or galvanic couples.</li></ul>
-          <h4>Polymers, composites, and additive parts</h4>
-          <ul><li>Polymers are viscoelastic and sensitive to temperature, strain rate, moisture, and time. Glass-transition temperature matters.</li><li>Composites are anisotropic; fiber direction controls stiffness and strength, while interfaces and layup drive delamination risk.</li><li>MJF PA12 properties depend on print orientation, porosity, surface condition, wall thickness, and process variability—test coupons may not reproduce thin origami walls exactly.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>05 · Dynamics &amp; vibrations</summary>
-        <div class="note-body">
-          <div class="note-equation">ΣF = ma &nbsp;&nbsp; ΣM<sub>G</sub> = I<sub>G</sub>α &nbsp;&nbsp; T₁ + U₁→₂ = T₂ &nbsp;&nbsp; impulse = Δmomentum</div>
-          <ul><li>Separate translation of the mass center from rotation about it. For rigid bodies, v = v<sub>O</sub> + ω × r and include tangential, normal, Coriolis, and relative terms when applicable.</li><li>Use work–energy when forces act through displacement; impulse–momentum for short-duration loads or impacts.</li></ul>
-          <div class="note-equation">mẍ + cẋ + kx = F(t) &nbsp; ωn = √(k/m) &nbsp; ζ = c/(2√km)</div>
-          <ul><li>Below, at, and above critical damping: underdamped oscillation, fastest non-oscillatory return, and overdamped return.</li><li>Resonance occurs near natural frequency; damping limits amplitude. Space mechanisms also require launch-vibration, shock, and modal-separation thinking.</li><li>For impact absorbers, ask where kinetic energy goes and whether the load pulse stays below component limits.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>06 · Thermodynamics, fluids &amp; heat transfer</summary>
-        <div class="note-body">
-          <h4>Thermodynamics</h4>
-          <div class="note-equation">ΔE = Q − W &nbsp;&nbsp; steady flow: Q̇ − Ẇ = ṁ(Δh + ΔV²/2 + gΔz)</div>
-          <ul><li>Define control mass versus control volume, sign convention, steady state, and whether kinetic/potential terms are negligible.</li><li>Entropy generation measures irreversibility; real efficiency is bounded by the reversible/isentropic case.</li></ul>
-          <h4>Fluid mechanics</h4>
-          <div class="note-equation">ṁ = ρAV &nbsp;&nbsp; p/ρg + V²/2g + z = constant − losses &nbsp;&nbsp; Re = ρVD/μ</div>
-          <ul><li>Continuity conserves mass. Bernoulli requires careful assumptions; add pumps, turbines, and major/minor losses for real systems.</li><li>Pressure drop rises with resistance; restrictions, roughness, length, turns, and reduced flow area matter. No-slip creates boundary layers and viscous losses.</li></ul>
-          <h4>Heat transfer</h4>
-          <div class="note-equation">q̇cond = −kA dT/dx &nbsp; q̇conv = hA(Ts−T∞) &nbsp; q̇rad = εσA(Ts⁴−Tsur⁴)</div>
-          <ul><li>Use thermal-resistance networks for series/parallel paths. In vacuum, external convection disappears, making conduction paths and radiation dominant.</li><li>Thermal expansion, gradients, contact resistance, emissivity, cycling, and heater/sensor placement can become structural and controls problems.</li></ul>
-          <div class="note-callout"><strong>Résumé link:</strong> connect Adient’s 50.2% occupied thigh-region loss to a load-induced channel restriction, then explain why geometry—not blower capacity—was the root cause.</div>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>07 · Machine design, joints &amp; GD&amp;T</summary>
-        <div class="note-body">
-          <ul><li>Begin with function, interfaces, load cases, life, environment, manufacturability, inspectability, mass, and cost.</li><li>Factors of safety address uncertainty but do not replace correct load cases. Distinguish yield, ultimate, buckling, fatigue, bearing, tear-out, and fastener failure margins.</li><li>Bolted joints: preload keeps interfaces clamped; consider separation, slip, proof strength, torque scatter, thread engagement, edge distance, bearing, and shear planes.</li><li>Fits: clearance, transition, interference. Tolerance stacks may use worst-case for guaranteed assembly or RSS when statistical assumptions are valid.</li><li>Datums create a repeatable reference frame. Position controls feature location; profile controls complex surfaces; MMC can provide bonus tolerance.</li><li>Kinematic constraint aims for exactly constrained location; overconstraint can create assembly stress, binding, or sensitivity to tolerance.</li></ul>
-          <div class="note-callout"><strong>Résumé link:</strong> be ready to defend datum selection, critical dimensions, manufacturing sequence, and inspection strategy for the 20+ chassis-insert drawings.</div>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>08 · Manufacturing &amp; design for assembly</summary>
-        <div class="note-body">
-          <ul><li>Design around process capability: tool access, workholding, setup count, standard tools, minimum wall thickness, internal radii, tolerances, and inspection access.</li><li>Manual machining sequence: establish datums, face/square stock, rough before finishing, protect critical surfaces, minimize reclamping error, deburr, and inspect.</li><li>Drilling creates a hole; reaming improves size and finish; tapping cuts threads. Avoid asking a drill or end mill to perform a cut it is poorly suited for.</li><li>DFA reduces part count, handling, orientation ambiguity, difficult fasteners, and assembly time. Poka-yoke features prevent incorrect installation.</li><li>Additive manufacturing enables complex geometry but introduces anisotropy, support/process limits, surface finish, dimensional variability, and post-processing needs.</li><li>Composite design must consider ply orientation, balanced/symmetric layups, load introduction, inserts, core shear, face wrinkling, delamination, and manufacturing defects.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>09 · FEA, DIC &amp; experimental validation</summary>
-        <div class="note-body">
-          <h4>FEA checklist</h4>
-          <ul><li>Define the question first. Choose dimensionality, element type, material model, contacts, loads, constraints, symmetry, and nonlinear settings to match the physics.</li><li>A solver can converge to the wrong model. Check reactions against applied load, deformation shape, units, energy balance, mesh convergence, and sensitivity to boundary conditions.</li><li>Stress singularities at point loads, sharp re-entrant corners, or perfectly fixed edges should not be reported as physical peak stress without interpretation.</li><li>Geometric nonlinearity matters for large rotation, contact, buckling, and collapse—central to Kresling behavior.</li></ul>
-          <h4>Testing and DIC</h4>
-          <ul><li>Calibrate equipment; define sampling rate, preload, alignment, fixtures, zeroing, repeat count, and uncertainty before testing.</li><li>GOM Correlate tracks a stochastic speckle pattern or defined points through image frames. Subset size trades spatial resolution against robust correlation.</li><li>Validate with displacement, force, strain/rotation fields, repeatability, and deformation mode—not only one peak number.</li><li>Explain discrepancies through material variability, geometry/tolerance, fixture compliance, contact/friction, alignment, idealized constraints, and measurement uncertainty.</li></ul>
-          <div class="note-callout"><strong>My numbers:</strong> 27 CAD models, 12 PA12 prototypes, ~74 N peak load, ~37 mm displacement, ~28° unit rotation; compare DIC and physical tests with Abaqus predictions without overstating agreement.</div>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>10 · Controls, sensors &amp; space hardware</summary>
-        <div class="note-body">
-          <ul><li>Sensor chain: measurand → transducer → signal conditioning → sampling → calibration → filtering → engineering units → uncertainty.</li><li>Nyquist requires sampling above twice the highest retained frequency; practical systems need margin and anti-alias filtering.</li><li>Accuracy is closeness to truth; precision is repeatability. Resolution, sensitivity, bias, noise, hysteresis, drift, and bandwidth are different limitations.</li><li>Open-loop systems do not use output feedback. Closed-loop control can reject disturbances but stability, delay, saturation, and sensor noise matter.</li><li>Space hardware considerations: mass and stiffness, launch vibration/shock, vacuum, radiation, thermal cycling, contamination/outgassing, lubrication, fastener locking, redundancy, fault tolerance, testability, and limited repair access.</li><li>Verification answers “did we build it right?” Validation answers “did we build the right thing?” Qualification proves design margin; acceptance screens flight hardware workmanship.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>11 · Résumé project drill-down</summary>
-        <div class="note-body">
-          <h4>Kresling research</h4>
-          <ul><li>Why compression couples to rotation; why thickness raises force and stiffness; why height influences rotation; how energy absorption is calculated.</li><li>Why PA12/MJF, why quasi-static loading, what DIC measured, what Abaqus assumed, and what I would change for dynamic impact or flight hardware.</li></ul>
-          <h4>Adient ventilation</h4>
-          <ul><li>How the unoccupied result passed but the weighted-manikin condition exposed a 50.2% thigh-region loss.</li><li>Evidence for H-point channel crush; how ribs/rerouting addressed it; how I used a Pugh chart; meaning of the 19.6% FEA/test discrepancy; validation behind +17%, $358K, and −8 seconds.</li></ul>
-          <h4>MRacing</h4>
-          <ul><li>Load cases and safety rules for the monocoque hardware; why carbon sandwich structures need different checks from isotropic metal.</li><li>Push-bar factor of safety, joint design, machining choices, GD&amp;T, tolerance stack, assembly access, and how the team verified safe use.</li></ul>
-          <h4>Robot</h4>
-          <ul><li>Gear-ratio selection from required wheel torque and speed; traction limit μN; performance on a 20° incline; mechanism tradeoffs; failure discovered during testing.</li></ul>
-        </div>
-      </details>
-
-      <details class="note-card">
-        <summary>12 · Questions to rehearse</summary>
-        <div class="note-body">
-          <ul><li>Walk me through a free-body diagram for one of your designs.</li><li>Which failure mode governed, and which initially looked critical but was not?</li><li>How did you choose your factor of safety and load cases?</li><li>What assumptions had the greatest effect on your FEA?</li><li>How did you know your mesh and boundary conditions were adequate?</li><li>Why did simulation and test disagree, and how did you isolate the cause?</li><li>How would your design change for vacuum, launch vibration, radiation, or thermal cycling?</li><li>Describe a test fixture you designed. How did fixture compliance or alignment affect the data?</li><li>Tell me about a design that failed under one condition and how you found the root cause.</li><li>What did you personally own, what did teammates own, and what decision changed because of your work?</li><li>If mass had to fall 20%, what would you change first and what would you revalidate?</li><li>What would you do with two more weeks, and what evidence would change your recommendation?</li></ul>
-          <div class="note-callout"><strong>Answer rule:</strong> use Situation–Task–Action–Result for context, but spend most time on technical decisions, calculations, evidence, tradeoffs, and lessons learned.</div>
-        </div>
-      </details>
-    </div>
-  </section>
 
   <section id="skills">
     <h2>Skills</h2>
@@ -1720,23 +1557,6 @@
     if(e.key === 'Escape'){ closeAllModals(); closeLightbox(); }
   });
 
-  const notesSection = document.getElementById('notes');
-  const notesToggle = document.querySelector('[data-notes-toggle]');
-  const notesClose = document.querySelector('[data-notes-close]');
-
-  function showNotes(){
-    notesSection.hidden = false;
-    notesToggle.setAttribute('aria-expanded', 'true');
-    requestAnimationFrame(() => notesSection.scrollIntoView({behavior:'smooth', block:'start'}));
-  }
-  function hideNotes(){
-    notesSection.hidden = true;
-    notesToggle.setAttribute('aria-expanded', 'false');
-    notesToggle.focus();
-  }
-
-  notesToggle.addEventListener('click', () => notesSection.hidden ? showNotes() : hideNotes());
-  notesClose.addEventListener('click', hideNotes);
 </script>
 
 </body>
